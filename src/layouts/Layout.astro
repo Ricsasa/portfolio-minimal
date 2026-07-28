@@ -1,0 +1,69 @@
+---
+import "../styles/global.css";
+
+import i18n from "i18next";
+
+import { buildStaticPaths } from "astro-react-i18next/utils";
+import { Font } from "astro:assets";
+
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import Section from "../components/section.astro";
+
+export function getStaticPaths() {
+	return buildStaticPaths();
+}
+
+interface Props {
+	bgColor?: string;
+	accentColor?: string;
+}
+
+const { bgColor = "bg-custom-yellow-100" } = Astro.props;
+const { accentColor = "custom-yellow-300" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={i18n.language} class="scroll-smooth!">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>Ricardo Sanchez Saldivar</title>
+
+		<Font cssVariable="--font-literata" preload />
+		<Font cssVariable="--font-nunito" preload />
+		<Font cssVariable="--font-share-tech" preload />
+	</head>
+	<body class:list={[bgColor]}>
+		<Header accentColor={accentColor} />
+		<main>
+			<slot />
+		</main>
+		<Section bgColor={bgColor}>
+			<Footer accentColor={accentColor} />
+		</Section>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
+</style>
+
+<script>
+	import { initCardAnimations } from "../scripts/cardAnimation";
+	import { initMenuScrollSpy } from "../scripts/menuScrollSpy";
+	import { initMobileMenu } from "../scripts/mobileMenu";
+
+	initCardAnimations();
+	initMenuScrollSpy();
+	initMobileMenu();
+</script>

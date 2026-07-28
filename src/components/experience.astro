@@ -1,0 +1,84 @@
+---
+import i18n from "i18next";
+
+export interface Project {
+    name: string;
+    activities: string[];
+    technologies: string[];
+    achievements?: string | string[];
+}
+
+export interface Experience {
+    role: string;
+    company?: string;
+    years: string;
+    projects: Project[];
+    additionalActivities?: string[];
+}
+
+type Props = Experience;
+
+const { role, company, years, projects, additionalActivities } = Astro.props;
+
+const toList = (value?: string | string[]) =>
+    value === undefined ? [] : Array.isArray(value) ? value : [value];
+---
+
+<div class="col-span-4">
+    <div class="flex justify-between items-baseline mb-1">
+        <h3 class="text-[15px] font-bold text-black-tertiary">{role}</h3>
+        <span class="text-xs text-black-secondary">{years}</span>
+    </div>
+
+    {
+        company && (
+            <div class="text-xl text-black-secondary mb-2">{company}</div>
+        )
+    }
+
+    <ul class="list-disc pl-4.5 flex flex-col gap-3">
+        {
+            projects.map((project) => (
+                <li class="text-[13px] leading-relaxed text-black-tertiary">
+                    <span class="font-bold">{project.name}</span>
+                    <ul class="list-[circle] pl-4.5 mt-1 flex flex-col gap-1">
+                        {project.activities.map((activity) => (
+                            <li>{activity}</li>
+                        ))}
+                        <li>
+                            <span class="font-bold">
+                                {i18n.t("experience.technologies-label")}:
+                            </span>{" "}
+                            {project.technologies.join(", ")}
+                        </li>
+                        {toList(project.achievements).map((achievement) => (
+                            <li>
+                                <span class="font-bold">
+                                    {i18n.t("experience.achievements-label")}:
+                                </span>{" "}
+                                {achievement}
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+            ))
+        }
+    </ul>
+
+    {
+        additionalActivities && additionalActivities.length > 0 && (
+            <div class="mt-5">
+                <h4 class="text-xs font-bold uppercase text-black-secondary mb-2.5">
+                    {i18n.t("experience.additional-activities-label")}
+                </h4>
+                <ul class="list-disc pl-4.5 flex flex-col gap-1">
+                    {additionalActivities.map((activity) => (
+                        <li class="text-[13px] leading-relaxed text-black-tertiary">
+                            {activity}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+</div>

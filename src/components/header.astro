@@ -1,0 +1,42 @@
+---
+import i18n from "i18next";
+
+import MenuAstroComponent from "./menu.astro";
+import LangSelectorAstroComponent from "./lang-selector.astro";
+import DownloadCvAstroComponent from "./download-cv.astro";
+
+const { accentColor = "custom-yellow-300" } = Astro.props;
+---
+
+<header
+    data-accent-root
+    data-menu-root
+    class="group/header fixed top-4 right-4 z-50 max-h-[calc(100dvh-2rem)] overflow-y-auto md:top-8 md:right-8 md:max-h-[calc(100dvh-4rem)]"
+    style={`--header-accent: var(--color-${accentColor})`}
+>
+    <div
+        class="flex flex-col items-end gap-6   md:gap-8 md:px-6 md:py-5"
+    >
+        <div
+            class="flex items-center gap-4  bg-white/40 px-3 py-1.5 backdrop-blur-sm md:flex-col md:items-end md:gap-3 md:rounded-none md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none"
+        >
+            <DownloadCvAstroComponent />
+            <LangSelectorAstroComponent />
+            <button
+                type="button"
+                data-menu-toggle
+                aria-controls="main-menu"
+                aria-expanded="false"
+                class="px-2 py-1 font-sans text-sm font-bold text-black-primary transition-colors duration-300 hover:bg-(--header-accent) md:hidden"
+            >
+                {i18n.t("common:menu-label")}
+            </button>
+        </div>
+        <div
+            id="main-menu"
+            class="hidden border border-black-primary bg-white/40 backdrop-blur-sm px-4 py-3 group-data-[menu-open=true]/header:block md:block md:border-0 md:bg-transparent md:p-0"
+        >
+            <MenuAstroComponent />
+        </div>
+    </div>
+</header>

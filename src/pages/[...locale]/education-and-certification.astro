@@ -1,0 +1,89 @@
+---
+import i18n from "i18next";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import TitleAstroComponent from "../../components/title.astro";
+import SectionAstroComponent from "../../components/section.astro";
+
+export function getStaticPaths() {
+    return buildStaticPaths();
+}
+
+interface EducationItem {
+    title: string;
+    institution: string;
+    /** Optional, left empty for entries without a place. */
+    location: string;
+    period: string;
+}
+
+const educationItems = i18n.t("common:education.education-items", {
+    returnObjects: true,
+}) as EducationItem[];
+
+interface LanguageItem {
+    language: string;
+    proficiency: string;
+}
+
+const languageItems = i18n.t("common:education.language-items", {
+    returnObjects: true,
+}) as LanguageItem[];
+---
+
+<SectionAstroComponent id="education-and-certification" bgColor="bg-custom-coral-100">
+    <TitleAstroComponent
+        title={i18n.t("common:pages.education_and_certification")}
+        accentColor="custom-yellow-300"
+    />
+
+    <h3 class="text-xs font-bold uppercase text-black-secondary mb-2.5">
+        {i18n.t("common:education.education-label")}
+    </h3>
+    <div class="flex flex-col gap-16">
+        {
+            educationItems.map((item) => (
+                <div class="md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+                    <div class="col-span-4 flex justify-between items-baseline gap-4">
+                        <div>
+                            <h4 class="text-[15px] font-bold text-black-tertiary">
+                                {item.title}
+                            </h4>
+                            <div class="text-[13px] text-black-secondary">
+                                {item.institution}
+                                {item.location && ` · ${item.location}`}
+                            </div>
+                        </div>
+                        <span class="text-xs text-black-secondary">
+                            {item.period}
+                        </span>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+    
+    <h3 class="text-xs font-bold uppercase text-black-secondary mb-2.5 mt-16">
+        {i18n.t("common:education.languages-label")}
+    </h3>
+    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+        {
+            languageItems.map((item, index) => (
+                <>
+                    {index > 0 && (
+                        <span
+                            aria-hidden="true"
+                            class="text-[13px] text-black-secondary"
+                        >
+                            ·
+                        </span>
+                    )}
+                    <span class="text-[13px] text-black-tertiary">
+                        <strong class="font-bold">{item.language}</strong>
+                        {` - ${item.proficiency}`}
+                    </span>
+                </>
+            ))
+        }
+    </div>
+</SectionAstroComponent>

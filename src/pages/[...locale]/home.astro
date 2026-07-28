@@ -1,0 +1,33 @@
+---
+import i18n from "i18next";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import { Image } from "astro:assets";
+
+import Me from "../../assets/me.avif";
+
+import TitleAstroComponent from "../../components/title.astro";
+import SectionAstroComponent from "../../components/section.astro";
+
+export function getStaticPaths() {
+    return buildStaticPaths();
+}
+---
+
+<SectionAstroComponent id="home">
+    <TitleAstroComponent title={i18n.t("hi-label")} accentColor="custom-yellow-300" />
+    <div class="flex flex-col gap-12">
+        <div class="flex">
+            <Image
+                src={Me}
+                alt="Me"
+                class="h-70 w-70 object-contain grayscale hover:filter-none"
+                format="avif"
+                title="Me"
+            />
+        </div>
+        <p class="text-xl leading-14">
+            {i18n.t("summary-text")}
+        </p>
+    </div>
+</SectionAstroComponent>

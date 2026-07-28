@@ -1,0 +1,44 @@
+---
+import i18n from "i18next";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import TitleAstroComponent from "../../components/title.astro";
+import SectionAstroComponent from "../../components/section.astro";
+import ExperienceAstroComponent from "../../components/experience.astro";
+import type { Experience } from "../../components/experience.astro";
+
+export function getStaticPaths() {
+    return buildStaticPaths();
+}
+
+/** Entries live in public/locales/<locale>/professional-experiences.json. */
+const experiences = ["sabbatical", "salesloft", "tiempo", "epam"].map(
+    (key) =>
+        i18n.t(`professional-experiences:${key}`, {
+            returnObjects: true,
+            ns: "professional-experiences",
+        }) as Experience,
+);
+---
+
+<SectionAstroComponent id="professional-experience" bgColor="bg-blue-100">
+    <TitleAstroComponent
+        title={i18n.t("common:pages.professional_experience")}
+        accentColor="yellow-300"
+    />
+    <div class="flex flex-col gap-16">
+        {
+            experiences.map((experience) => (
+                <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+                    <ExperienceAstroComponent
+                        role={experience.role}
+                        company={experience.company}
+                        years={experience.years}
+                        projects={experience.projects}
+                        additionalActivities={experience.additionalActivities}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</SectionAstroComponent>

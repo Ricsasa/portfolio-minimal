@@ -1,0 +1,38 @@
+---
+import { getSection } from "../config/sections";
+
+interface Props {
+    /**
+     * Must match an id in src/config/sections.ts for the menu to track it.
+     * Omit it for bands the menu shouldn't navigate to, such as the footer.
+     */
+    id?: string;
+    bgColor?: string;
+    accentColor?: string;
+    /** Extra classes for the inner, width-constrained container. */
+    innerClass?: string;
+}
+
+const { id, innerClass } = Astro.props;
+
+const config = id ? getSection(id) : undefined;
+const bgColor = Astro.props.bgColor ?? config?.bgColor ?? "bg-custom-yellow-100";
+const accentColor =
+    Astro.props.accentColor ?? config?.accentColor ?? "custom-yellow-300";
+---
+
+<section
+    id={id}
+    data-section={id}
+    data-accent={`var(--color-${accentColor})`}
+    class:list={[bgColor, "w-full"]}
+>
+    <div
+        class:list={[
+            "mx-auto w-full max-w-9xl px-8 py-20 md:px-48 md:py-28",
+            innerClass,
+        ]}
+    >
+        <slot />
+    </div>
+</section>

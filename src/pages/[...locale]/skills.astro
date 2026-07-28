@@ -1,0 +1,70 @@
+---
+import i18n from "i18next";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import TitleAstroComponent from "../../components/title.astro";
+import SectionAstroComponent from "../../components/section.astro";
+import SkillGroupAstroComponent from "../../components/skill-group.astro";
+
+export function getStaticPaths() {
+    return buildStaticPaths();
+}
+
+const groups = [
+    {
+        title: i18n.t("common:skills.languages-label"),
+        skills: [
+            "React",
+            "Next.js",
+            "Node.js",
+            "Express",
+            "NestJS",
+            "PHP (Laravel)",
+            "React Native",
+            "Redux",
+            "Zustand",
+            "GraphQL",
+            "Tanstack React Query",
+            "Typescript",
+        ],
+    },
+    {
+        title: i18n.t("common:skills.data-stores-label"),
+        skills: ["MySQL", "PostgreSQL", "Elasticsearch", "Redis"],
+    },
+    {
+        title: i18n.t("common:skills.platforms-label"),
+        skills: [
+            "Docker",
+            "Kubernetes",
+            "AWS",
+            "GCP",
+            "Kafka",
+            "Github platform (Actions, pages)",
+        ],
+    },
+    {
+        title: i18n.t("common:skills.ai-label"),
+        skills: ["Claude Code", "Gemini"],
+    },
+];
+---
+
+<SectionAstroComponent id="skills" bgColor="bg-purple-100">
+    <TitleAstroComponent
+        title={i18n.t("common:pages.skills")}
+        accentColor="custom-yellow-300"
+    />
+    <div class="flex flex-col gap-16">
+        {
+            groups.map((group) => (
+                <div class="flex flex-col gap-12 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-4 w-7-xl items-start">
+                    <SkillGroupAstroComponent
+                        title={group.title}
+                        skills={group.skills}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</SectionAstroComponent>

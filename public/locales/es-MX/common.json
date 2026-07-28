@@ -1,0 +1,74 @@
+{
+  "pages": {
+    "home": "¡Hola!",
+    "selected_work": "Proyectos Destacados",
+    "professional_experience": "Experiencia Profesional",
+    "skills": "Habilidades",
+    "education_and_certification": "Educación y Certificaciones"
+  },
+  "projects": {
+    "screenshots-label": "Capturas del proyecto",
+    "screenshot-alt": "captura {{index}} de {{total}}",
+    "previous-label": "Captura anterior",
+    "next-label": "Captura siguiente",
+    "go-to-label": "Ir a la captura {{index}}",
+    "open-label": "Ver la captura a tamaño completo",
+    "close-label": "Cerrar"
+  },
+  "experience": {
+    "technologies-label": "Tecnologías",
+    "achievements-label": "Logros",
+    "additional-activities-label": "Actividades adicionales"
+  },
+  "skills": {
+    "languages-label": "Lenguajes y Frameworks",
+    "data-stores-label": "Bases de Datos",
+    "platforms-label": "Plataformas e Infraestructura",
+    "ai-label": "Herramientas de IA"
+  },
+  "education": {
+    "education-label": "Educación y certificaciones",
+    "languages-label": "Idiomas",
+    "education-items": [
+      {
+        "title": "Scrum Master certificado",
+        "institution": "Scrum Study",
+        "location": "",
+        "period": "2018-2021"
+      },
+      {
+        "title": "Licenciatura",
+        "institution": "Tecnologías de la Información",
+        "location": "UNAM-México",
+        "period": "2008-2012"
+      }
+    ],
+    "language-items": [
+      {
+        "language": "Español",
+        "proficiency": "Nativo"
+      },
+      {
+        "language": "Inglés",
+        "proficiency": "Competencia profesional completa"
+      },
+      {
+        "language": "Portugués",
+        "proficiency": "Competencia elemental"
+      },
+      {
+        "language": "Francés",
+        "proficiency": "Competencia elemental"
+      }
+    ]
+  },
+  "menu-label": "Menú",
+  "download-label": "Descargar CV",
+  "hi-label": "¡Hola! Soy Ricardo",
+  "summary-text": "Ingeniero de Software Fullstack, enfocado en el desarrollo de sistemas escalables y de alto rendimiento. Tengo experiencia y actualmente me interesan tecnologías como React, React Native, Node.js, Apollo GraphQL, PHP (Laravel), Elasticsearch, MySQL, PostgreSQL y plataformas de computación en la nube (AWS, GCP).",
+  "footer-heading": "¡Trabajemos juntos!",
+  "footer-email-label": "ricsasa201@gmail.com",
+  "footer-linkedin-label": "Perfil de LinkedIn",
+  "footer-github-label": "Perfil de GitHub",
+  "footer-copyright-label": "© 2026 Ricardo Sanchez Saldivar. Todos los derechos reservados."
+}

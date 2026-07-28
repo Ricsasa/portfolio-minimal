@@ -1,0 +1,179 @@
+{
+    "sabbatical": {
+        "role": "Año Sabático Profesional",
+        "years": "Nov 2025 – Actualidad",
+        "projects": [
+            {
+                "name": "Portafolio Profesional (en desarrollo)",
+                "activities": [
+                    "Desarrollo de un portafolio personal para mostrar mi experiencia profesional, mi experiencia técnica y proyectos seleccionados."
+                ],
+                "technologies": [
+                    "Astro",
+                    "React",
+                    "GSAP",
+                    "GitHub Actions (pipeline de CI/CD automatizado)"
+                ]
+            },
+            {
+                "name": "Sitio web optimizado para SEO para una clínica de eliminación de tatuajes",
+                "activities": [
+                    "Diseñé y desarrollé un sitio web de marketing de alto rendimiento con un enfoque SEO-first, dirigido a búsquedas de eliminación de tatuajes en Guadalajara y su zona metropolitana.",
+                    "La plataforma generó un impacto de negocio medible, contribuyendo a un incremento del 30% en ingresos y del 50% en solicitudes de clientes durante los primeros seis meses tras su lanzamiento."
+                ],
+                "technologies": [
+                    "Astro",
+                    "React",
+                    "GSAP",
+                    "GitHub Actions",
+                    "Técnicas modernas de optimización de rendimiento web"
+                ],
+                "achievements": "Incremento del 30% en ingresos y del 50% en solicitudes de clientes."
+            },
+            {
+                "name": "CRM/ERP a la medida para una clínica de eliminación de tatuajes",
+                "activities": [
+                    "Diseñé la arquitectura y desarrollé una plataforma de gestión de negocio a la medida que unificó en un solo sistema los registros de clientes, la información de proveedores, la gestión de inventario, el control de ingresos y gastos, y los reportes operativos.",
+                    "Al automatizar procesos manuales e implementar flujos de trabajo específicos del negocio, la aplicación mejoró la eficiencia operativa, fortaleció el control de inventario y de recursos, y permitió la toma de decisiones basada en datos mediante analítica de demografía de clientes y tratamientos."
+                ],
+                "technologies": [
+                    "Laravel",
+                    "Inertia",
+                    "AWS RDS",
+                    "AWS EC2"
+                ],
+                "achievements": "Optimicé las operaciones de la clínica al centralizar los datos de clientes, inventario y finanzas en una sola plataforma, reduciendo el riesgo de pérdida de información y mejorando el control de inventario, el seguimiento de gastos y la eficiencia operativa en general."
+            }
+        ],
+        "additionalActivities": [
+            "Preparación activa para la certificación AWS Certified Solutions Architect – Associate, con enfoque en el diseño de soluciones en la nube escalables, seguras y rentables sobre AWS.",
+            "Estudio activo y enfoque en los fundamentos: estructuras de datos, algoritmos y diseño de sistemas.",
+            "Integración de herramientas de desarrollo con IA como Claude Code y Gemini en el flujo de trabajo para mejorar la productividad, asegurando la calidad del código mediante pruebas, revisión por pares y mejores prácticas de ingeniería."
+        ]
+    },
+    "salesloft": {
+        "role": "Ingeniero de Software Fullstack",
+        "company": "Salesloft",
+        "years": "Abr 2020 – Nov 2025",
+        "projects": [
+            {
+                "name": "Integraciones de la Plataforma de Conversation Intelligence",
+                "activities": [
+                    "Diseñé y desarrollé integraciones de backend con múltiples plataformas de videoconferencia para el producto de Conversation Intelligence de Salesloft.",
+                    "Construí servicios distribuidos y orientados a eventos con Node.js, Kafka, PostgreSQL, Redis como cola con BullMQ y Elasticsearch para procesar grandes volúmenes de datos asíncronos de reuniones con alta confiabilidad, dando soporte a una plataforma escalable de analítica de conversaciones."
+                ],
+                "technologies": [
+                    "Node.js",
+                    "Kafka",
+                    "PostgreSQL",
+                    "Elasticsearch"
+                ],
+                "achievements": "Amplié el ecosistema de Conversation Intelligence al integrar proveedores adicionales de videoconferencia, reduciendo las barreras de adopción y permitiendo que más clientes analizaran sus conversaciones desde la plataforma de reuniones de su preferencia."
+            },
+            {
+                "name": "Rediseño de la Plataforma de Conversation Intelligence",
+                "activities": [
+                    "Colaboré con Product Managers, diseñadores UX/UI e ingenieros de datos para rediseñar y mejorar la plataforma de Conversation Intelligence.",
+                    "Implementé funcionalidades fullstack de extremo a extremo, incluyendo búsqueda avanzada, presets de búsqueda reutilizables, exportación de clips y gestión de playlists.",
+                    "Diseñé nuevos resolvers de GraphQL y optimicé consultas de Elasticsearch para permitir la recuperación de grabaciones de conversaciones.",
+                    "Utilicé Sentry para monitoreo en producción, investigación de errores y análisis de rendimiento, lo que ayudó a identificar problemas y validar la estabilidad de la aplicación después de cada despliegue."
+                ],
+                "technologies": [
+                    "React",
+                    "Apollo GraphQL",
+                    "Node.js",
+                    "Elasticsearch",
+                    "PostgreSQL",
+                    "Sentry",
+                    "Figma"
+                ],
+                "achievements": "Al alinear la plataforma de Conversation Intelligence con el sistema de diseño de Salesloft, logré una experiencia de usuario más consistente e intuitiva que redujo la fricción y mejoró el descubrimiento de funcionalidades."
+            },
+            {
+                "name": "Tech Lead – Aplicación Móvil de Salesloft",
+                "activities": [
+                    "Lideré la ejecución técnica de la aplicación híbrida de React Native de Salesloft, colaborando con Product Managers, diseñadores UX/UI y Customer Success para entregar nuevas funcionalidades móviles alineadas con las necesidades del negocio.",
+                    "Dirigí el desarrollo de nuevos módulos, mejoré la estabilidad y el mantenimiento de la aplicación, y aseguré el cumplimiento de los requisitos de seguridad en constante evolución de la Apple App Store y Google Play.",
+                    "Mejoré y actualicé el pipeline de CI/CD en GitHub Actions para compilar y desplegar las nuevas versiones de la aplicación en la Apple App Store y la Google Play Store.",
+                    "Diseñé e implementé endpoints de API en Ruby on Rails para extender la funcionalidad de la plataforma web a los clientes móviles, manteniendo la paridad de funcionalidades entre plataformas.",
+                    "Realicé revisiones de código en GitHub de manera constante, contribuí a decisiones de arquitectura y mentoreé a otros ingenieros para promover las mejores prácticas de ingeniería y la entrega de software de alta calidad."
+                ],
+                "technologies": [
+                    "React Native",
+                    "Swift",
+                    "Kotlin",
+                    "Zustand",
+                    "Ruby on Rails"
+                ],
+                "achievements": "Incrementé la calificación de la aplicación móvil de Salesloft en la Apple App Store de 2.5 a 3.9 estrellas en pocos meses, liderando mejoras de estabilidad, nuevas funcionalidades e iniciativas continuas de calidad."
+            }
+        ]
+    },
+    "tiempo": {
+        "role": "Ingeniero de Software Fullstack",
+        "company": "Tiempo Development",
+        "years": "Ago 2017 – Abr 2020",
+        "projects": [
+            {
+                "name": "Desarrollo Front-end – Plataforma de E-learning",
+                "activities": [
+                    "Desarrollé y di mantenimiento a funcionalidades de frontend para una plataforma empresarial de e-learning, implementando reportes exportables y migrando módulos heredados de Angular a React como parte del esfuerzo de modernización de la plataforma.",
+                    "Colaboré con los equipos de backend para integrar APIs de GraphQL y REST, mejorando el mantenimiento del código y la experiencia de usuario en general."
+                ],
+                "technologies": [
+                    "React",
+                    "GraphQL",
+                    "APIs REST"
+                ],
+                "achievements": "Al modernizar los módulos heredados de Angular y alinearlos con la arquitectura de React de la plataforma, mejoré la experiencia de usuario, reduje la deuda técnica e incrementé la adopción de las nuevas funcionalidades de la plataforma."
+            },
+            {
+                "name": "Desarrollo Fullstack – Foro de la Plataforma de E-learning",
+                "activities": [
+                    "Diseñé y desarrollé un foro de discusión fullstack que permitió a los estudiantes hacer preguntas, participar en conversaciones por hilos, votar por las contribuciones y reportar contenido inapropiado.",
+                    "Construí un backend escalable con GraphQL, Node.js y AWS DynamoDB para dar soporte a una experiencia de aprendizaje atractiva y colaborativa."
+                ],
+                "technologies": [
+                    "React",
+                    "GraphQL",
+                    "Node.js",
+                    "AWS DynamoDB"
+                ],
+                "achievements": "Al entregar una plataforma de discusión escalable, amplié la experiencia de e-learning más allá del contenido en video, fomentando la participación de los estudiantes."
+            }
+        ]
+    },
+    "epam": {
+        "role": "Desarrollador Frontend",
+        "company": "EPAM Systems",
+        "years": "Nov 2016 – Ago 2017",
+        "projects": [
+            {
+                "name": "Desarrollo Front-end – Plataforma de Noticias Legales",
+                "activities": [
+                    "Colaboré con Product Managers para definir e implementar la estrategia de rediseño de la división legal de una importante organización de noticias.",
+                    "Desarrollé una aplicación moderna con React y Redux utilizando el framework Foundation CSS, entregando una mejor experiencia de usuario y alineando la plataforma con los nuevos requerimientos de negocio y usabilidad."
+                ],
+                "technologies": [
+                    "React",
+                    "Redux",
+                    "Foundation CSS"
+                ],
+                "achievements": "Entregué una experiencia de usuario modernizada que alineó la plataforma con los requerimientos cambiantes del negocio, mejorando la usabilidad, la consistencia de la navegación y la adopción por parte de los usuarios, además de establecer una arquitectura de frontend más mantenible."
+            },
+            {
+                "name": "Herramientas de Automatización de QA",
+                "activities": [
+                    "Diseñé y desarrollé herramientas internas de automatización con Node.js, Express y Puppeteer para agilizar los flujos de trabajo de aseguramiento de calidad de una aplicación Angular de gran escala. Automaticé tareas repetitivas de pruebas e interacciones con el navegador, reduciendo el esfuerzo manual y permitiendo una validación más rápida de los cambios durante los ciclos de desarrollo y liberación."
+                ],
+                "technologies": [
+                    "Node.js",
+                    "Express",
+                    "Puppeteer",
+                    "Angular"
+                ],
+                "achievements": "Reduje el esfuerzo manual de QA al automatizar flujos de pruebas repetitivos, acelerando los ciclos de validación, mejorando la consistencia de las pruebas y permitiendo entregas más rápidas de nuevas versiones de la aplicación."
+            }
+        ]
+    }
+}

@@ -1,0 +1,44 @@
+---
+import i18n from "i18next";
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import TitleAstroComponent from "../../components/title.astro";
+import SectionAstroComponent from "../../components/section.astro";
+import ProjectAstroComponent from "../../components/project.astro";
+import type { Project } from "../../components/project.astro";
+
+export function getStaticPaths() {
+    return buildStaticPaths();
+}
+
+const projects = i18n.t("projects:projects", {
+    returnObjects: true,
+    ns: "projects",
+}) as Project[];
+---
+
+<SectionAstroComponent id="selected-work" bgColor="bg-custom-green-100">
+    <TitleAstroComponent
+        title={i18n.t("common:pages.selected_work")}
+        accentColor="custom-yellow-300"
+    />
+    <div class="flex flex-col gap-16">
+        {
+            projects.map((project) => (
+                <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+                    <ProjectAstroComponent
+                        title={project.title}
+                        brief_description={project.brief_description}
+                        full_description={project.full_description}
+                        category={project.category}
+                        year={project.year}
+                        href={project.href}
+                        cta={project.cta}
+                        technologies={project.technologies}
+                        screenshots={project.screenshots}
+                    />
+                </div>
+            ))
+        }
+    </div>
+</SectionAstroComponent>

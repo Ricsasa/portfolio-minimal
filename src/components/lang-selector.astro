@@ -1,0 +1,63 @@
+---
+import i18n from "i18next";
+import {
+    getLocaleConfig,
+    getLocalizedPathname,
+} from "astro-react-i18next/utils";
+
+const links = [
+    { href: "/", label: i18n.t("common:pages.home") },
+    { href: "/selected-work", label: i18n.t("common:pages.selected_work") },
+    {
+        href: "/professional-experience",
+        label: i18n.t("common:pages.professional_experience"),
+    },
+    { href: "/skills", label: i18n.t("common:pages.skills") },
+    {
+        href: "/education-and-certification",
+        label: i18n.t("common:pages.education_and_certification"),
+    },
+];
+
+const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
+const current = normalize(Astro.url.pathname);
+
+const { locales = [] } = getLocaleConfig() ?? {};
+const currentLocale = i18n.language;
+
+// The route without any locale prefix, so it can be re-localized per language.
+const basePath =
+    links.find(({ href }) => normalize(getLocalizedPathname(href)) === current)
+        ?.href ?? "/";
+
+const localeLabels: Record<string, string> = {
+    "en-US": "EN",
+    "es-MX": "ES",
+};
+---
+
+<ul class="flex gap-3 md:gap-4" aria-label="Language">
+    {
+        locales.map((locale) => {
+            const isActive = locale === currentLocale;
+            return (
+                <li>
+                    <a
+                        href={getLocalizedPathname(basePath, locale)}
+                        hreflang={locale}
+                        lang={locale}
+                        aria-current={isActive ? "true" : undefined}
+                        class:list={[
+                            "px-2 py-1 font-sans text-sm transition-colors duration-300 hover:bg-(--header-accent) md:text-base",
+                            isActive
+                                ? "font-bold text-black-primary"
+                                : "font-light text-black-secondary hover:text-black-primary",
+                        ]}
+                    >
+                        {localeLabels[locale] ?? locale}
+                    </a>
+                </li>
+            );
+        })
+    }
+</ul>

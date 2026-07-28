@@ -1,0 +1,7 @@
+---
+const { title  } = Astro.props;
+---
+
+<div class="md:col-span-3 items-center mb-12 md:mb-36">
+    {title && <h1 class="font-sans text-5xl font-bold md:text-6xl">{title}</h1>}
+</div>

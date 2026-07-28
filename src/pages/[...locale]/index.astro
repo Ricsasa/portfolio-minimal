@@ -1,0 +1,23 @@
+---
+import { buildStaticPaths } from "astro-react-i18next/utils";
+
+import Layout from "../../layouts/Layout.astro";
+
+import HomeSection from './home.astro'
+import SelectedWorkSection from './selected-work.astro'
+import ProfessionalExperienceSection from './professional-experience.astro'
+import Skills from './skills.astro'
+import EducationAndCertification from "./education-and-certification.astro";
+
+export function getStaticPaths() {
+  return buildStaticPaths();
+}
+---
+
+<Layout>
+  <HomeSection />
+  <SelectedWorkSection />
+  <ProfessionalExperienceSection />
+  <Skills />
+  <EducationAndCertification />
+</Layout>

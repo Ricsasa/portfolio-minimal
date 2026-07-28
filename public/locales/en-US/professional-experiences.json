@@ -1,0 +1,179 @@
+{
+    "sabbatical": {
+        "role": "Professional Sabbatical",
+        "years": "Nov 2025 – Present",
+        "projects": [
+            {
+                "name": "Professional Portfolio (Work in Progress)",
+                "activities": [
+                    "Developing a personal portfolio to showcase professional experience, technical expertise, and selected projects."
+                ],
+                "technologies": [
+                    "Astro",
+                    "React",
+                    "GSAP",
+                    "GitHub Actions (automated CI/CD pipeline)"
+                ]
+            },
+            {
+                "name": "SEO-Optimized Website for a Tattoo Removal Clinic",
+                "activities": [
+                    "Designed and developed a high-performance marketing website with an SEO-first approach, targeting tattoo removal searches across Guadalajara and the surrounding metropolitan area.",
+                    "The platform generated measurable business impact, contributing to a 30% increase in revenue and a 50% increase in customer inquiries within the first six months of launch."
+                ],
+                "technologies": [
+                    "Astro",
+                    "React",
+                    "GSAP",
+                    "GitHub Actions",
+                    "Modern web performance optimization techniques"
+                ],
+                "achievements": "Increase in revenue by 30% and customer inquiries by 50%."
+            },
+            {
+                "name": "Custom CRM/ERP for a Tattoo Removal Clinic",
+                "activities": [
+                    "Architected and developed a custom business management platform that unified customer records, vendor information, inventory management, income and expense tracking, and operational reporting into a single system.",
+                    "By automating manual processes and implementing business-specific workflows, the application improved operational efficiency, strengthened inventory and resource control, and enabled data-driven decision making through customer demographics and treatment analytics."
+                ],
+                "technologies": [
+                    "Laravel",
+                    "Inertia",
+                    "AWS RDS",
+                    "AWS EC2"
+                ],
+                "achievements": "Streamlined clinic operations by centralizing customer, inventory, and financial data into a single platform, reducing the risk of data loss while improving inventory control, expense tracking, and overall operational efficiency."
+            }
+        ],
+        "additionalActivities": [
+            "Actively preparing for the AWS Certified Solutions Architect – Associate certification, with a focus on designing scalable, secure, and cost-effective cloud solutions on AWS.",
+            "Actively studying and focusing on the fundamentals: Data Structures, Algorithms, System Design.",
+            "Integrating AI development tools such as Claude Code and Gemini into the development workflow to improve productivity while ensuring code quality through testing, peer review, and engineering best practices."
+        ]
+    },
+    "salesloft": {
+        "role": "Fullstack Software Engineer",
+        "company": "Salesloft",
+        "years": "Apr 2020 – Nov 2025",
+        "projects": [
+            {
+                "name": "Conversation Intelligence Platform Integrations",
+                "activities": [
+                    "Designed and developed backend integrations with multiple video conferencing platforms for Salesloft's Conversation Intelligence product.",
+                    "Built distributed, event-driven services using Node.js, Kafka, PostgreSQL, Redis as a queue with BullMQ, and Elasticsearch to process large volumes of asynchronous meeting data with high reliability, supporting a scalable platform for conversation analytics."
+                ],
+                "technologies": [
+                    "Node.js",
+                    "Kafka",
+                    "PostgreSQL",
+                    "Elasticsearch"
+                ],
+                "achievements": "Expanded the Conversation Intelligence ecosystem by integrating additional video conferencing providers, reducing adoption barriers and enabling more customers to analyze conversations from their preferred meeting platforms."
+            },
+            {
+                "name": "Conversation Intelligence Platform Redesign",
+                "activities": [
+                    "Partnered with Product Managers, UX/UI Designers, and Data Engineers to redesign and enhance the Conversation Intelligence platform.",
+                    "Implemented end-to-end full-stack features, including advanced search, reusable search presets, clip exporting, and playlist management.",
+                    "Designed new GraphQL resolvers and optimized Elasticsearch queries to enable retrieval of conversation recordings.",
+                    "Leveraged Sentry for production monitoring, error investigation, and performance analysis, helping identify issues and validate application stability after deployments."
+                ],
+                "technologies": [
+                    "React",
+                    "Apollo GraphQL",
+                    "Node.js",
+                    "Elasticsearch",
+                    "PostgreSQL",
+                    "Sentry",
+                    "Figma"
+                ],
+                "achievements": "By aligning the Conversation Intelligence platform with Salesloft's design system, created a more consistent and intuitive user experience that reduced friction and improved feature discoverability."
+            },
+            {
+                "name": "Tech Lead – Salesloft Mobile App",
+                "activities": [
+                    "Led the technical execution of Salesloft's hybrid React Native application, partnering with Product Managers, UX/UI Designers, and Customer Success to deliver new mobile features aligned with business needs.",
+                    "Directed the development of new modules, improved application stability and maintainability, and ensured compliance with evolving Apple App Store and Google Play security requirements.",
+                    "Improved and updated the CI/CD pipeline on GitHub Actions to build and deploy the new versions of the App for Apple App Store, and Google Play Store.",
+                    "Designed and implemented Ruby on Rails API endpoints to extend web platform functionality to mobile clients, maintaining feature parity across platforms.",
+                    "Regularly conducted code reviews on GitHub, contributed to architectural decisions, and mentored engineers to promote engineering best practices and high-quality software delivery."
+                ],
+                "technologies": [
+                    "React Native",
+                    "Swift",
+                    "Kotlin",
+                    "Zustand",
+                    "Ruby on Rails"
+                ],
+                "achievements": "Increased the Salesloft Mobile App's Apple App Store rating from 2.5 to 3.9 stars within a few months by leading stability improvements, feature enhancements, and ongoing quality initiatives."
+            }
+        ]
+    },
+    "tiempo": {
+        "role": "Fullstack Software Engineer",
+        "company": "Tiempo Development",
+        "years": "Aug 2017 – Apr 2020",
+        "projects": [
+            {
+                "name": "Front-end Development – E-learning Platform",
+                "activities": [
+                    "Developed and maintained frontend features for an enterprise e-learning platform, implementing exportable reports and migrating legacy Angular modules to React as part of the platform modernization effort.",
+                    "Collaborated with backend teams to integrate GraphQL and REST APIs, improving maintainability and the overall user experience."
+                ],
+                "technologies": [
+                    "React",
+                    "GraphQL",
+                    "REST APIs"
+                ],
+                "achievements": "By modernizing legacy Angular modules and aligning them with the platform's React architecture, improved the user experience, reduced technical debt, and increased adoption of newly introduced platform features."
+            },
+            {
+                "name": "Full Stack Development – E-learning Platform Forum",
+                "activities": [
+                    "Designed and developed a full-stack discussion forum that enabled learners to ask questions, participate in threaded discussions, vote on contributions, and report inappropriate content.",
+                    "Built a scalable backend using GraphQL, Node.js, and AWS DynamoDB to support an engaging and collaborative learning experience."
+                ],
+                "technologies": [
+                    "React",
+                    "GraphQL",
+                    "Node.js",
+                    "AWS DynamoDB"
+                ],
+                "achievements": "By delivering a scalable discussion platform, expanded the e-learning experience beyond video content, encouraging learner participation."
+            }
+        ]
+    },
+    "epam": {
+        "role": "Frontend Developer",
+        "company": "EPAM Systems",
+        "years": "Nov 2016 – Aug 2017",
+        "projects": [
+            {
+                "name": "Front-end Development – Legal News Platform",
+                "activities": [
+                    "Partnered with Product Managers to define and implement the redesign strategy for the legal division of a major news organization.",
+                    "Developed a modern React and Redux application using the Foundation CSS framework, delivering an improved user experience while aligning the platform with updated business and usability requirements."
+                ],
+                "technologies": [
+                    "React",
+                    "Redux",
+                    "Foundation CSS"
+                ],
+                "achievements": "Delivered a modernized user experience that aligned the platform with evolving business requirements, improving usability, navigation consistency, and user adoption while establishing a more maintainable frontend architecture."
+            },
+            {
+                "name": "QA Automation Tools",
+                "activities": [
+                    "Designed and developed internal automation tools using Node.js, Express, and Puppeteer to streamline quality assurance workflows for a large Angular application. Automated repetitive testing tasks and browser interactions, reducing manual effort and enabling faster validation of application changes during development and release cycles."
+                ],
+                "technologies": [
+                    "Node.js",
+                    "Express",
+                    "Puppeteer",
+                    "Angular"
+                ],
+                "achievements": "Reduced manual QA effort by automating repetitive testing workflows, accelerating validation cycles, improving test consistency, and enabling faster delivery of new application releases."
+            }
+        ]
+    }
+}

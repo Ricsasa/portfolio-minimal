@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+    --font-serif: var(--font-literata), serif;
+    --font-sans: var(--font-nunito), sans-serif;
+    --font-mono: var(--font-share-tech), monospace;
+
+    color-scheme: light !important;
+}
+
+@theme {
+    --color-black-primary: #111111;
+    --color-black-secondary: #4B4B4B;
+    --color-black-tertiary: #2a2a22;
+
+    --color-custom-yellow-100: #FFF6B3;
+    --color-custom-yellow-300: #FFD84D;
+    --color-custom-green-100: #CFF8D8;
+    --color-custom-green-300: #6EE7A8;
+    --color-custom-blue-100: #D8F0FF;
+    --color-custom-blue-300: #74C8FF;
+    --color-custom-purple-100: #E9DEFF;
+    --color-custom-purple-300: #B78CFF;
+    --color-custom-coral-100: #FFE0D6;
+    --color-custom-coral-300: #FF9B7A;
+
+    --container-8xl: 90rem;
+    --container-9xl: 100rem;
+}
+
+/* accentColor is composed at runtime, so these can't be found by scanning */
+@source inline("hover:{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral}-{100,300}");
+@source inline("{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral}-{100,300}");
+
+@plugin "@iconify/tailwind4";
+
+@layer base {
+    body {
+        color: var(--color-black-primary);
+    }
+}

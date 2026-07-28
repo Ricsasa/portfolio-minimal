@@ -1,0 +1,31 @@
+---
+import i18n from "i18next";
+
+import { SECTIONS } from "../config/sections";
+---
+
+<nav aria-label="Main" data-scroll-spy>
+    <ul class="flex flex-col items-end gap-2">
+        {
+            SECTIONS.map(({ id, labelKey }, index) => (
+                <li>
+                    <a
+                        href={`#${id}`}
+                        data-section-link={id}
+                        data-active={index === 0 ? "true" : undefined}
+                        aria-current={index === 0 ? "true" : undefined}
+                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-black-primary"
+                    >
+                        <span
+                            aria-hidden="true"
+                            class="size-3 shrink-0 rounded-full bg-(--header-accent) opacity-0 transition-opacity duration-300 group-data-[active=true]:opacity-100"
+                        />
+                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-(--header-accent)">
+                            {i18n.t(labelKey)}
+                        </span>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>

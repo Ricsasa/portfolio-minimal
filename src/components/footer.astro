@@ -1,0 +1,97 @@
+---
+import i18n from "i18next";
+
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+
+const { accentColor } = Astro.props;
+---
+
+<footer class:list={[`border-${accentColor}`, "border-t pt-12"]}>
+    <div
+        class="mx-auto flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
+    >
+        <div>
+            <p class="text-2xl font-extralight md:text-3xl">
+                {i18n.t("footer-heading")}
+            </p>
+            <a
+                href="mailto:ricsasa201@gmail.com"
+                class:list={[
+                    `hover:bg-${accentColor}`,
+                    "mt-4 inline-flex items-center gap-2 text-sm transition-colors hover:text-black-tertiary",
+                ]}
+            >
+                <EnvelopeIcon className="size-5" aria-hidden="true" />
+                {i18n.t("footer-email-label")}
+            </a>
+        </div>
+
+        <div class="flex flex-col gap-5 md:items-end">
+            <div class="flex items-center gap-3">
+                <a
+                    href="https://www.linkedin.com/in/ricardosanchezs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={i18n.t("footer-linkedin-label")}
+                    class:list={[
+                        `hover:border-${accentColor} hover:bg-${accentColor}`,
+                        "grid size-10 place-items-center rounded-full border transition-colors hover:text-black-primary",
+                    ]}
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5ZM.46 8.02h4.08V23H.46V8.02ZM7.09 8.02H11v2.05h.06c.54-1.03 1.87-2.12 3.85-2.12 4.12 0 4.88 2.71 4.88 6.24V23h-4.07v-7.8c0-1.86-.03-4.25-2.59-4.25-2.59 0-2.99 2.02-2.99 4.12V23H7.09V8.02Z"
+                        ></path>
+                    </svg>
+                </a>
+                <a
+                    href="https://github.com/Ricsasa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={i18n.t("footer-github-label")}
+                    class:list={[
+                        `hover:border-${accentColor} hover:bg-${accentColor}`,
+                        "grid size-10 place-items-center rounded-full border transition-colors hover:text-black-primary",
+                    ]}
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.34 9.34 0 0 1 12 6.91c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.79-4.58 5.05.36.32.68.93.68 1.88 0 1.36-.01 2.45-.01 2.79 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-xs">
+                {i18n.t("footer-copyright-label")}
+            </p>
+        </div>
+    </div>
+    <div
+        class:list={[
+            `border-${accentColor}`,
+            "mt-10 pt-6 border-t text-center",
+        ]}
+    >
+        <a
+            href="https://rs-studio.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+                `hover:text-${accentColor}`,
+                "text-[10px] font-light tracking-wide text-black-secondary transition-colors duration-300",
+            ]}
+        >
+            Made with ❤️ by rs-studio.dev
+        </a>
+    </div>
+</footer>
