@@ -2,6 +2,7 @@
 import i18n from "i18next";
 
 import { renderMarkdown } from "../utils/markdown";
+import { resolveScreenshots } from "../utils/screenshots";
 import Carousel from "./carousel.astro";
 
 export interface Project {
@@ -13,8 +14,8 @@ export interface Project {
     href?: string;
     cta?: string;
     technologies?: string[];
-    /** Paths under `public/`, in display order. Aspect ratios may differ. */
-    screenshots?: string[];
+    /** Folder under `public/projects/` holding this project's screenshots. */
+    "screenshots-prefix"?: string;
 }
 
 type Props = Project;
@@ -28,9 +29,10 @@ const {
     href,
     cta,
     technologies = [],
-    screenshots = [],
+    "screenshots-prefix": screenshotsPrefix,
 } = Astro.props;
 
+const screenshots = resolveScreenshots(screenshotsPrefix);
 const fullDescriptionHtml = renderMarkdown(full_description);
 const carouselId = `screenshots-${title
     .toLowerCase()

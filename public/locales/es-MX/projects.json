@@ -14,12 +14,7 @@
                 "Tailwind",
                 "Github Actions"
             ],
-            "screenshots": [
-                "/projects/lumina-landing/1.avif",
-                "/projects/lumina-landing/2.avif",
-                "/projects/lumina-landing/3.avif",
-                "/projects/lumina-landing/4.avif"
-            ]
+            "screenshots-prefix": "lumina-landing"
         },
         {
             "title": "Lumina Estudio Láser (Sistema de Administración)",
@@ -37,12 +32,7 @@
                 "AWS",
                 "MySQL"
             ],
-            "screenshots": [
-                "/projects/lumina-admin/1.avif",
-                "/projects/lumina-admin/2.avif",
-                "/projects/lumina-admin/3.avif",
-                "/projects/lumina-admin/4.avif"
-            ]
+            "screenshots-prefix": "lumina-admin"
         },
         {
             "title": "TU MARCA AQUÍ!",
