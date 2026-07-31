@@ -42,6 +42,15 @@ const carouselId = `screenshots-${title
     .replace(/^-|-$/g, "")}`;
 ---
 
+<pre>
+    {screenshots.length}
+</pre>
+<pre>
+    {screenshots[0]}
+</pre>
+<pre>
+    {screenshotsPrefix}
+</pre>
 <div class="card col-span-4 flex flex-col gap-4">
     <div>
         <div class="text-xs text-black-secondary">{category} · {year}</div>
@@ -68,16 +77,20 @@ const carouselId = `screenshots-${title
                 id={carouselId}
                 images={screenshots.map((screenshot, position) => ({
                     src: screenshot,
-                    alt: `${title} \u2014 ${i18n.t("common:projects.screenshot-alt", {
-                        index: position + 1,
-                        total: screenshots.length,
-                    })}`,
+                    alt: `${title} \u2014 ${i18n.t(
+                        "common:projects.screenshot-alt",
+                        {
+                            index: position + 1,
+                            total: screenshots.length,
+                        },
+                    )}`,
                 }))}
                 label={i18n.t("common:projects.screenshots-label")}
                 labels={{
                     previous: i18n.t("common:projects.previous-label"),
                     next: i18n.t("common:projects.next-label"),
-                    goTo: (index) => i18n.t("common:projects.go-to-label", { index }),
+                    goTo: (index) =>
+                        i18n.t("common:projects.go-to-label", { index }),
                     open: i18n.t("common:projects.open-label"),
                     close: i18n.t("common:projects.close-label"),
                 }}
