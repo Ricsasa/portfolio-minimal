@@ -9,7 +9,7 @@
 
 import fs from "node:fs";
 
-const PROJECTS_DIR = new URL("../../public/projects/", import.meta.url);
+const PROJECTS_DIR = new URL("/projects/", import.meta.url);
 
 const IMAGE_EXTENSIONS = new Set([
     ".avif",
