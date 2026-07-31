@@ -8,8 +8,14 @@
  */
 
 import fs from "node:fs";
+import path from "node:path";
 
-const PROJECTS_DIR = new URL("/projects/", import.meta.url);
+/**
+ * `public/` has no URL identity at build time — it is a plain folder that Astro
+ * copies into `dist/` once rendering is done. It has to be read from the
+ * project root on disk, which is the cwd for both `astro dev` and `astro build`.
+ */
+const PROJECTS_DIR = path.join(process.cwd(), "public", "projects");
 
 const IMAGE_EXTENSIONS = new Set([
     ".avif",
@@ -29,14 +35,14 @@ const isImage = (name: string) =>
 export function resolveScreenshots(prefix?: string): string[] {
     if (!prefix) return [];
 
-    const directory = new URL(`${prefix}/`, PROJECTS_DIR);
+    const directory = path.join(PROJECTS_DIR, prefix);
 
     let entries: string[];
 
     try {
         entries = fs.readdirSync(directory);
     } catch {
-        console.warn(`[screenshots] No such folder: public/projects/${prefix}`);
+        console.warn(`[screenshots] No such folder: ${directory}`);
         return [];
     }
 
