@@ -1,36 +1,43 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+/**
+ * Scroll-entry reveals for the section cards.
+ *
+ * Elements marked `.reveal` fade and rise into place the first time they cross
+ * into the viewport, staggered by the `--index` custom property their wrapper
+ * sets. The hidden state and the transition live in `global.css`; this file
+ * only decides when each element flips to revealed.
+ */
 
-gsap.registerPlugin(ScrollTrigger);
+export function initCardAnimations(): void {
+  const targets = Array.from(
+    document.querySelectorAll<HTMLElement>(".reveal"),
+  );
 
-export function initCardAnimations() {
-  const cards = gsap.utils.toArray<HTMLElement>(".gsap-reveal-card");
+  if (!targets.length) return;
 
-  if (!cards.length) return;
+  const reveal = (element: HTMLElement) =>
+    element.setAttribute("data-revealed", "true");
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    gsap.set(cards, {
-      autoAlpha: 1,
-      y: 0,
-    });
-
+  // Without support, or when motion is unwelcome, show everything at once.
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    targets.forEach(reveal);
     return;
   }
 
-  document.documentElement.classList.add("gsap-ready");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-  cards.forEach((card) => {
-    gsap.to(card, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.7,
-      ease: "power2.out",
+        reveal(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      });
+    },
+    // Hold the reveal until the card is a little way into view.
+    { rootMargin: "0px 0px -15% 0px" },
+  );
 
-      scrollTrigger: {
-        trigger: card,
-        start: "top 85%",
-        once: true,
-      },
-    });
-  });
+  targets.forEach((target) => observer.observe(target));
 }

@@ -24,7 +24,7 @@ const toList = (value?: string | string[]) =>
     value === undefined ? [] : Array.isArray(value) ? value : [value];
 ---
 
-<div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+<div class="card col-span-4 flex flex-col gap-4">
     <div>
         <div class="text-xs text-black-secondary">
             {company ? `${company} · ${years}` : years}

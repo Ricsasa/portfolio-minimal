@@ -32,6 +32,11 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 
+		{/* Set before first paint so revealed content never flashes in. */}
+		<script is:inline>
+			document.documentElement.classList.add("js-reveal");
+		</script>
+
 		<title>Ricardo Sanchez Saldivar</title>
 
 		<Font cssVariable="--font-literata" preload />

@@ -1,7 +1,5 @@
 ---
 import i18n from "i18next";
-
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
 ---
 
 <footer class="border-t border-(--section-accent) pt-12">
@@ -16,7 +14,19 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
                 href="mailto:ricsasa201@gmail.com"
                 class="mt-4 inline-flex items-center gap-2 text-sm transition-colors hover:bg-(--section-accent) hover:text-black-tertiary"
             >
-                <EnvelopeIcon className="size-5" aria-hidden="true" />
+                <svg
+                    viewBox="0 0 24 24"
+                    class="size-5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M3 5h18v14H3z"></path>
+                    <path d="m3 5 9 7 9-7"></path>
+                </svg>
                 {i18n.t("footer-email-label")}
             </a>
         </div>
@@ -28,7 +38,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={i18n.t("footer-linkedin-label")}
-                    class="grid size-10 place-items-center border transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
+                    class="grid size-10 place-items-center transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -46,7 +56,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={i18n.t("footer-github-label")}
-                    class="grid size-10 place-items-center border transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
+                    class="grid size-10 place-items-center transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -70,9 +80,21 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
             href="https://rs-studio.dev"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-xs text-black-secondary transition-colors duration-300 hover:text-black-primary"
+            aria-label="rs-studio.dev"
+            class="inline-flex items-center gap-1.5 text-xs text-black-secondary transition-colors duration-300 hover:text-black-primary"
         >
-            Made with ❤️ by rs-studio.dev
+            Made with
+            <svg
+                viewBox="0 0 256 256"
+                class="size-3.5"
+                fill="currentColor"
+                aria-hidden="true"
+            >
+                <path
+                    d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32Z"
+                ></path>
+            </svg>
+            by rs-studio.dev
         </a>
     </div>
 </footer>

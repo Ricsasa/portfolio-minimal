@@ -21,8 +21,11 @@ const projects = i18n.t("projects:projects", {
     <TitleAstroComponent title={i18n.t("common:pages.selected_work")} />
     <div class="flex flex-col gap-16">
         {
-            projects.map((project) => (
-                <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+            projects.map((project, index) => (
+                <div
+                    class="reveal flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start"
+                    style={`--index: ${index}`}
+                >
                     <ProjectAstroComponent
                         title={project.title}
                         brief_description={project.brief_description}

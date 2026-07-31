@@ -35,8 +35,11 @@ const languageItems = i18n.t("common:education.language-items", {
     <TitleAstroComponent title={i18n.t("common:pages.education_and_certification")} />
 
     <div class="flex flex-col gap-16">
-        <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
-            <div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+        <div
+            class="reveal flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start"
+            style="--index: 0"
+        >
+            <div class="card col-span-4 flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-black-tertiary">
                     {i18n.t("common:education.education-label")}
                 </h3>
@@ -64,8 +67,11 @@ const languageItems = i18n.t("common:education.language-items", {
             </div>
         </div>
 
-        <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
-            <div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+        <div
+            class="reveal flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start"
+            style="--index: 1"
+        >
+            <div class="card col-span-4 flex flex-col gap-4">
                 <h3 class="text-xl font-bold text-black-tertiary">
                     {i18n.t("common:education.languages-label")}
                 </h3>
@@ -73,7 +79,7 @@ const languageItems = i18n.t("common:education.language-items", {
                 <div class="flex flex-wrap gap-1.5">
                     {
                         languageItems.map((item) => (
-                            <span class="text-xs bg-custom-coral-300 text-black-tertiary px-2.5 py-1">
+                            <span class="tag bg-custom-coral-100 text-black-tertiary">
                                 {`${item.language} - ${item.proficiency}`}
                             </span>
                         ))

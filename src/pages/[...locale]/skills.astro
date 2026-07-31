@@ -26,6 +26,7 @@ const groups = [
             "GraphQL",
             "Tanstack React Query",
             "Typescript",
+            "Tailwind"
         ],
     },
     {
@@ -45,7 +46,7 @@ const groups = [
     },
     {
         title: i18n.t("common:skills.ai-label"),
-        skills: ["Claude Code", "Gemini"],
+        skills: ["Claude Code", "Gemini", "MCPs", "RAG", "Langchain"],
     },
 ];
 ---
@@ -54,8 +55,11 @@ const groups = [
     <TitleAstroComponent title={i18n.t("common:pages.skills")} />
     <div class="flex flex-col gap-16">
         {
-            groups.map((group) => (
-                <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+            groups.map((group, index) => (
+                <div
+                    class="reveal flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start"
+                    style={`--index: ${index}`}
+                >
                     <SkillGroupAstroComponent
                         title={group.title}
                         skills={group.skills}

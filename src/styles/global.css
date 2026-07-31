@@ -25,6 +25,10 @@
     --color-custom-coral-100: #FFE0D6;
     --color-custom-coral-300: #FF9B7A;
 
+    /* Hairline used by every card and divider. Kept as an alpha so it reads
+       the same over each of the section bands. */
+    --color-border-subtle: rgb(0 0 0 / 0.06);
+
     --container-8xl: 90rem;
     --container-9xl: 100rem;
 
@@ -32,16 +36,16 @@
      * One interline ratio for body copy and one for display type, so every
      * `text-*` utility lands on the same rhythm without per-element `leading-*`.
      */
-    --text-xs--line-height: 1.625;
-    --text-sm--line-height: 1.625;
-    --text-base--line-height: 1.625;
-    --text-lg--line-height: 1.625;
-    --text-xl--line-height: 1.625;
-    --text-2xl--line-height: 1.2;
-    --text-3xl--line-height: 1.2;
+    --text-xs--line-height: 1.85;
+    --text-sm--line-height: 1.85;
+    --text-base--line-height: 1.85;
+    --text-lg--line-height: 1.85;
+    --text-xl--line-height: 1.85;
+    --text-2xl--line-height: 1.25;
+    --text-3xl--line-height: 1.25;
     --text-4xl--line-height: 1.2;
-    --text-5xl--line-height: 1.2;
-    --text-6xl--line-height: 1.2;
+    --text-5xl--line-height: 1.15;
+    --text-6xl--line-height: 1.15;
 }
 
 /* accentColor is composed at runtime, so these can't be found by scanning */
@@ -55,6 +59,63 @@
         color: var(--color-black-primary);
         /* Arbitrary sizes such as `text-[13px]` carry no line-height of their
            own, so they inherit the body ratio and stay on the same rhythm. */
+        line-height: 2;
+    }
+}
+
+@layer components {
+    /*
+     * The one card surface, shared by selected work, professional experience,
+     * skills and education so the four sections cannot drift apart again.
+     * Layout (column span, inner gaps) stays in the markup.
+     */
+    .card {
+        background-color:rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: 0.5rem;
+        padding: 2rem;
+        transition: box-shadow 200ms ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
+    }
+
+    /* Shape and type only; each section supplies its own accent background. */
+    .tag {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
         line-height: 1.625;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    /*
+     * Scroll-entry reveals. The hidden state is gated behind `.js-reveal`,
+     * which an inline head script sets before first paint, so the content
+     * still renders when the module script never runs.
+     */
+    :root.js-reveal .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+            opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+            transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+        transition-delay: calc(var(--index, 0) * 80ms);
+        will-change: transform, opacity;
+    }
+
+    :root.js-reveal .reveal[data-revealed="true"] {
+        opacity: 1;
+        transform: none;
+        will-change: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        :root.js-reveal .reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
     }
 }
