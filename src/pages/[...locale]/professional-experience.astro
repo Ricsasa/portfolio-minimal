@@ -22,10 +22,7 @@ const experiences = ["sabbatical", "salesloft", "tiempo", "epam"].map(
 ---
 
 <SectionAstroComponent id="professional-experience" bgColor="bg-blue-100">
-    <TitleAstroComponent
-        title={i18n.t("common:pages.professional_experience")}
-        accentColor="yellow-300"
-    />
+    <TitleAstroComponent title={i18n.t("common:pages.professional_experience")} />
     <div class="flex flex-col gap-16">
         {
             experiences.map((experience) => (

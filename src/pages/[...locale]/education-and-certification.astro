@@ -32,58 +32,54 @@ const languageItems = i18n.t("common:education.language-items", {
 ---
 
 <SectionAstroComponent id="education-and-certification" bgColor="bg-custom-coral-100">
-    <TitleAstroComponent
-        title={i18n.t("common:pages.education_and_certification")}
-        accentColor="custom-yellow-300"
-    />
+    <TitleAstroComponent title={i18n.t("common:pages.education_and_certification")} />
 
-    <h3 class="text-xs font-bold uppercase text-black-secondary mb-2.5">
-        {i18n.t("common:education.education-label")}
-    </h3>
     <div class="flex flex-col gap-16">
-        {
-            educationItems.map((item) => (
-                <div class="md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
-                    <div class="col-span-4 flex justify-between items-baseline gap-4">
-                        <div>
-                            <h4 class="text-[15px] font-bold text-black-tertiary">
-                                {item.title}
-                            </h4>
-                            <div class="text-[13px] text-black-secondary">
-                                {item.institution}
-                                {item.location && ` · ${item.location}`}
+        <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+            <div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+                <h3 class="text-xl font-bold text-black-tertiary">
+                    {i18n.t("common:education.education-label")}
+                </h3>
+
+                <div class="flex flex-col gap-4">
+                    {
+                        educationItems.map((item) => (
+                            <div class="flex justify-between items-baseline gap-4">
+                                <div>
+                                    <h4 class="text-[15px] font-bold text-black-tertiary">
+                                        {item.title}
+                                    </h4>
+                                    <div class="text-[13px] text-black-secondary">
+                                        {item.institution}
+                                        {item.location && ` · ${item.location}`}
+                                    </div>
+                                </div>
+                                <span class="text-xs text-black-secondary">
+                                    {item.period}
+                                </span>
                             </div>
-                        </div>
-                        <span class="text-xs text-black-secondary">
-                            {item.period}
-                        </span>
-                    </div>
+                        ))
+                    }
                 </div>
-            ))
-        }
-    </div>
-    
-    <h3 class="text-xs font-bold uppercase text-black-secondary mb-2.5 mt-16">
-        {i18n.t("common:education.languages-label")}
-    </h3>
-    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2">
-        {
-            languageItems.map((item, index) => (
-                <>
-                    {index > 0 && (
-                        <span
-                            aria-hidden="true"
-                            class="text-[13px] text-black-secondary"
-                        >
-                            ·
-                        </span>
-                    )}
-                    <span class="text-[13px] text-black-tertiary">
-                        <strong class="font-bold">{item.language}</strong>
-                        {` - ${item.proficiency}`}
-                    </span>
-                </>
-            ))
-        }
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
+            <div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+                <h3 class="text-xl font-bold text-black-tertiary">
+                    {i18n.t("common:education.languages-label")}
+                </h3>
+
+                <div class="flex flex-wrap gap-1.5">
+                    {
+                        languageItems.map((item) => (
+                            <span class="text-xs bg-custom-coral-300 text-black-tertiary px-2.5 py-1">
+                                {`${item.language} - ${item.proficiency}`}
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </SectionAstroComponent>

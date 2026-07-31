@@ -15,7 +15,7 @@ export function getStaticPaths() {
 ---
 
 <SectionAstroComponent id="home">
-    <TitleAstroComponent title={i18n.t("hi-label")} accentColor="custom-yellow-300" />
+    <TitleAstroComponent title={i18n.t("hi-label")} />
     <div class="flex flex-col gap-12">
         <div class="flex mx-auto md:mx-0">
             <Image
@@ -26,7 +26,7 @@ export function getStaticPaths() {
                 title="Me"
             />
         </div>
-        <p class="text-xl leading-14">
+        <p class="text-xl">
             {i18n.t("summary-text")}
         </p>
     </div>

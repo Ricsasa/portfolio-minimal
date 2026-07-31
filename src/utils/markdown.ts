@@ -10,11 +10,10 @@
 
 const CLASSES = {
     heading: "text-base font-bold text-black-tertiary",
-    paragraph: "text-sm leading-relaxed text-black-secondary",
-    list: "space-y-1 list-disc pl-5 text-sm leading-relaxed text-black-secondary",
+    paragraph: "text-sm text-black-secondary",
+    list: "space-y-1 list-disc pl-5 text-sm text-black-secondary",
     listItem: "pl-1",
-    orderedList:
-        "space-y-1 list-decimal pl-5 text-sm leading-relaxed text-black-secondary",
+    orderedList: "space-y-1 list-decimal pl-5 text-sm text-black-secondary",
     strong: "font-bold text-black-tertiary",
     emphasis: "italic",
     code: "font-mono text-xs bg-custom-green-100 px-1 py-0.5",

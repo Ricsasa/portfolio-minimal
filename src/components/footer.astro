@@ -2,24 +2,19 @@
 import i18n from "i18next";
 
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
-
-const { accentColor } = Astro.props;
 ---
 
-<footer class:list={[`border-${accentColor}`, "border-t pt-12"]}>
+<footer class="border-t border-(--section-accent) pt-12">
     <div
         class="mx-auto flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
     >
         <div>
-            <p class="text-2xl font-extralight md:text-3xl">
+            <p class="text-2xl font-bold md:text-3xl">
                 {i18n.t("footer-heading")}
             </p>
             <a
                 href="mailto:ricsasa201@gmail.com"
-                class:list={[
-                    `hover:bg-${accentColor}`,
-                    "mt-4 inline-flex items-center gap-2 text-sm transition-colors hover:text-black-tertiary",
-                ]}
+                class="mt-4 inline-flex items-center gap-2 text-sm transition-colors hover:bg-(--section-accent) hover:text-black-tertiary"
             >
                 <EnvelopeIcon className="size-5" aria-hidden="true" />
                 {i18n.t("footer-email-label")}
@@ -33,10 +28,7 @@ const { accentColor } = Astro.props;
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={i18n.t("footer-linkedin-label")}
-                    class:list={[
-                        `hover:border-${accentColor} hover:bg-${accentColor}`,
-                        "grid size-10 place-items-center rounded-full border transition-colors hover:text-black-primary",
-                    ]}
+                    class="grid size-10 place-items-center border transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -54,10 +46,7 @@ const { accentColor } = Astro.props;
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={i18n.t("footer-github-label")}
-                    class:list={[
-                        `hover:border-${accentColor} hover:bg-${accentColor}`,
-                        "grid size-10 place-items-center rounded-full border transition-colors hover:text-black-primary",
-                    ]}
+                    class="grid size-10 place-items-center border transition-colors hover:border-(--section-accent) hover:bg-(--section-accent) hover:text-black-primary"
                 >
                     <svg
                         viewBox="0 0 24 24"
@@ -76,20 +65,12 @@ const { accentColor } = Astro.props;
             </p>
         </div>
     </div>
-    <div
-        class:list={[
-            `border-${accentColor}`,
-            "mt-10 pt-6 border-t text-center",
-        ]}
-    >
+    <div class="mt-10 pt-6 border-t border-(--section-accent) text-center">
         <a
             href="https://rs-studio.dev"
             target="_blank"
             rel="noopener noreferrer"
-            class:list={[
-                `hover:text-${accentColor}`,
-                "text-[10px] font-light tracking-wide text-black-secondary transition-colors duration-300",
-            ]}
+            class="text-xs text-black-secondary transition-colors duration-300 hover:text-black-primary"
         >
             Made with ❤️ by rs-studio.dev
         </a>

@@ -51,14 +51,11 @@ const groups = [
 ---
 
 <SectionAstroComponent id="skills" bgColor="bg-purple-100">
-    <TitleAstroComponent
-        title={i18n.t("common:pages.skills")}
-        accentColor="custom-yellow-300"
-    />
+    <TitleAstroComponent title={i18n.t("common:pages.skills")} />
     <div class="flex flex-col gap-16">
         {
             groups.map((group) => (
-                <div class="flex flex-col gap-12 md:grid md:grid-cols-2 md:grid-rows-1 md:gap-4 w-7-xl items-start">
+                <div class="flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start">
                     <SkillGroupAstroComponent
                         title={group.title}
                         skills={group.skills}

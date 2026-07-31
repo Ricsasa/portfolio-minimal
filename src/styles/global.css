@@ -27,6 +27,21 @@
 
     --container-8xl: 90rem;
     --container-9xl: 100rem;
+
+    /*
+     * One interline ratio for body copy and one for display type, so every
+     * `text-*` utility lands on the same rhythm without per-element `leading-*`.
+     */
+    --text-xs--line-height: 1.625;
+    --text-sm--line-height: 1.625;
+    --text-base--line-height: 1.625;
+    --text-lg--line-height: 1.625;
+    --text-xl--line-height: 1.625;
+    --text-2xl--line-height: 1.2;
+    --text-3xl--line-height: 1.2;
+    --text-4xl--line-height: 1.2;
+    --text-5xl--line-height: 1.2;
+    --text-6xl--line-height: 1.2;
 }
 
 /* accentColor is composed at runtime, so these can't be found by scanning */
@@ -38,5 +53,8 @@
 @layer base {
     body {
         color: var(--color-black-primary);
+        /* Arbitrary sizes such as `text-[13px]` carry no line-height of their
+           own, so they inherit the body ratio and stay on the same rhythm. */
+        line-height: 1.625;
     }
 }

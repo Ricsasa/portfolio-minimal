@@ -42,12 +42,14 @@ const carouselId = `screenshots-${title
     .replace(/^-|-$/g, "")}`;
 ---
 
-<div class="bg-white/50 p-6 col-span-4">
-    <div class="text-xs text-black-secondary mb-1">{category} · {year}</div>
-    <h3 class="text-xl font-bold text-black-tertiary mb-3">{title}</h3>
+<div class="bg-white/50 p-6 col-span-4 flex flex-col gap-4">
+    <div>
+        <div class="text-xs text-black-secondary">{category} · {year}</div>
+        <h3 class="text-xl font-bold text-black-tertiary">{title}</h3>
+    </div>
 
-    <div class="flex flex-col gap-2.5 max-w-155 mb-3.5">
-        <p class="text-xs leading-relaxed text-black-tertiary">
+    <div class="flex flex-col gap-2.5">
+        <p class="text-xs text-black-tertiary">
             {brief_description}
         </p>
         {
@@ -64,7 +66,6 @@ const carouselId = `screenshots-${title
         screenshots.length > 0 && (
             <Carousel
                 id={carouselId}
-                class="mb-4"
                 images={screenshots.map((screenshot, position) => ({
                     src: screenshot,
                     alt: `${title} \u2014 ${i18n.t("common:projects.screenshot-alt", {
@@ -86,7 +87,7 @@ const carouselId = `screenshots-${title
 
     {
         technologies.length > 0 && (
-            <div class="flex flex-wrap gap-1.5 mb-3.5">
+            <div class="flex flex-wrap gap-1.5">
                 {technologies.map((technology) => (
                     <span class="text-xs bg-custom-green-300 text-black-tertiary px-2.5 py-1">
                         {technology}
@@ -102,7 +103,7 @@ const carouselId = `screenshots-${title
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-sm text-black-primary underline"
+                class="self-start text-sm text-black-primary underline"
             >
                 {cta} ↗
             </a>

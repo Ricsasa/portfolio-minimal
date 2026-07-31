@@ -18,10 +18,7 @@ const projects = i18n.t("projects:projects", {
 ---
 
 <SectionAstroComponent id="selected-work" bgColor="bg-custom-green-100">
-    <TitleAstroComponent
-        title={i18n.t("common:pages.selected_work")}
-        accentColor="custom-yellow-300"
-    />
+    <TitleAstroComponent title={i18n.t("common:pages.selected_work")} />
     <div class="flex flex-col gap-16">
         {
             projects.map((project) => (

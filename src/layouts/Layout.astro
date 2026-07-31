@@ -43,8 +43,8 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
 		<main>
 			<slot />
 		</main>
-		<Section bgColor={bgColor}>
-			<Footer accentColor={accentColor} />
+		<Section bgColor={bgColor} accentColor={accentColor}>
+			<Footer />
 		</Section>
 	</body>
 </html>
