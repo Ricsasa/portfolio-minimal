@@ -7,6 +7,8 @@ import sitemap from "@astrojs/sitemap";
 
 import partytown from "@astrojs/partytown";
 
+import mdx from "@astrojs/mdx";
+
 import reactI18next from "astro-react-i18next";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -22,7 +24,15 @@ export default defineConfig({
     locales: ["en-US", "es-MX"],
     namespaces: ['common', 'professional-experiences', 'projects']
   }),
+  mdx(),
   ],
+
+  markdown: {
+    shikiConfig: {
+      theme: "github-light",
+      wrap: true,
+    },
+  },
 
   fonts: [
     {

@@ -1,0 +1,27 @@
+---
+import BlogImg from "./BlogImg.astro";
+
+/**
+ * Explicit captioned-image tag for use inside `.mdx` bodies
+ * (`<Figure src={...} alt="...">caption text</Figure>`), for cases that need
+ * more control than a bare `![]()` — e.g. a screenshot that needs a caption.
+ */
+interface Props {
+    src: ImageMetadata | string;
+    alt?: string;
+}
+
+const { src, alt = "" } = Astro.props;
+const hasCaption = Astro.slots.has("default");
+---
+
+<figure class="flex flex-col gap-2">
+    <BlogImg src={src} alt={alt} />
+    {
+        hasCaption && (
+            <figcaption class="text-xs text-black-secondary">
+                <slot />
+            </figcaption>
+        )
+    }
+</figure>

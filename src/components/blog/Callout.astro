@@ -1,0 +1,25 @@
+---
+/**
+ * Reuses the shared `.card` surface for asides/notes. Also mapped to MDX's
+ * default `blockquote` element, so a bare markdown `>` quote gets the same
+ * treatment without authors needing the JSX tag.
+ */
+interface Props {
+    title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<aside class="card flex flex-col gap-2">
+    {
+        title && (
+            <p class="text-xs font-bold tracking-[0.05em] text-black-tertiary uppercase">
+                {title}
+            </p>
+        )
+    }
+    <div class="text-sm text-black-secondary">
+        <slot />
+    </div>
+</aside>

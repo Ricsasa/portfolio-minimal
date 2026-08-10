@@ -17,10 +17,22 @@ export function getStaticPaths() {
 interface Props {
 	bgColor?: string;
 	accentColor?: string;
+	title?: string;
+	description?: string;
+	ogImage?: string;
+	ogType?: string;
+	canonicalURL?: string;
 }
 
 const { bgColor = "bg-custom-yellow-100" } = Astro.props;
 const { accentColor = "custom-yellow-300" } = Astro.props;
+const {
+	title = "Ricardo Sanchez Saldivar",
+	description,
+	ogImage,
+	ogType = "website",
+	canonicalURL = Astro.url.href,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -37,7 +49,16 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
 			document.documentElement.classList.add("js-reveal");
 		</script>
 
-		<title>Ricardo Sanchez Saldivar</title>
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
+		<link rel="canonical" href={canonicalURL} />
+
+		<meta property="og:title" content={title} />
+		{description && <meta property="og:description" content={description} />}
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalURL} />
+		{ogImage && <meta property="og:image" content={ogImage} />}
+		<meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
 
 		<Font cssVariable="--font-literata" preload />
 		<Font cssVariable="--font-nunito" preload />

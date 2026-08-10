@@ -1,0 +1,47 @@
+---
+import { getLocaleConfig } from "astro-react-i18next/utils";
+import { getCollection, render } from "astro:content";
+
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import Figure from "../../../components/blog/Figure.astro";
+import Callout from "../../../components/blog/Callout.astro";
+import BlogImg from "../../../components/blog/BlogImg.astro";
+
+export async function getStaticPaths() {
+    const { defaultLocale, locales, prefixDefaultLocale } = getLocaleConfig();
+    const posts = await getCollection("blog", (p) => !p.data.draft);
+
+    const localesWithPosts = locales.filter((locale) =>
+        posts.some((p) => p.data.lang === locale),
+    );
+
+    return localesWithPosts.flatMap((locale) =>
+        posts
+            .filter((p) => p.data.lang === locale)
+            .map((post) => ({
+                params: {
+                    locale: locale !== defaultLocale || prefixDefaultLocale ? locale : undefined,
+                    slug: post.id,
+                },
+                props: { post },
+            })),
+    );
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, cover } = post.data;
+const { Content } = await render(post);
+
+const ogImage = cover ? new URL(cover.src, Astro.site).href : undefined;
+---
+
+<BlogLayout
+    title={title}
+    description={description}
+    pubDate={pubDate}
+    updatedDate={updatedDate}
+    tags={tags}
+    ogImage={ogImage}
+>
+    <Content components={{ img: BlogImg, blockquote: Callout, Figure, Callout }} />
+</BlogLayout>

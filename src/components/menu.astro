@@ -1,7 +1,22 @@
 ---
 import i18n from "i18next";
+import { getLocalizedPathname } from "astro-react-i18next/utils";
+import { getCollection } from "astro:content";
 
 import { SECTIONS } from "../config/sections";
+
+const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
+const isHomePage =
+    normalize(getLocalizedPathname(Astro.url.pathname, "")) === "/";
+
+const hasBlogPosts =
+    (
+        await getCollection(
+            "blog",
+            (p) => !p.data.draft && p.data.lang === i18n.language,
+        )
+    ).length > 0;
+const blogHref = getLocalizedPathname("/blog", i18n.language);
 ---
 
 <nav aria-label="Main" data-scroll-spy>
@@ -10,10 +25,10 @@ import { SECTIONS } from "../config/sections";
             SECTIONS.map(({ id, labelKey }, index) => (
                 <li>
                     <a
-                        href={`#${id}`}
-                        data-section-link={id}
-                        data-active={index === 0 ? "true" : undefined}
-                        aria-current={index === 0 ? "true" : undefined}
+                        href={isHomePage ? `#${id}` : getLocalizedPathname(`/#${id}`, i18n.language)}
+                        data-section-link={isHomePage ? id : undefined}
+                        data-active={isHomePage && index === 0 ? "true" : undefined}
+                        aria-current={isHomePage && index === 0 ? "true" : undefined}
                         class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-black-primary"
                     >
                         <span
@@ -26,6 +41,21 @@ import { SECTIONS } from "../config/sections";
                     </a>
                 </li>
             ))
+        }
+        {
+            hasBlogPosts && (
+                <li>
+                    <a
+                        href={blogHref}
+                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary"
+                    >
+                        <span aria-hidden="true" class="size-3 shrink-0 rounded-full opacity-0" />
+                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-(--header-accent)">
+                            {i18n.t("common:pages.blog")}
+                        </span>
+                    </a>
+                </li>
+            )
         }
     </ul>
 </nav>

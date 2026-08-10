@@ -1,0 +1,48 @@
+---
+import i18n from "i18next";
+import { getLocaleConfig, getLocalizedPathname } from "astro-react-i18next/utils";
+import { getCollection } from "astro:content";
+
+import Layout from "../../../layouts/Layout.astro";
+import BlogCard from "../../../components/blog-card.astro";
+
+export async function getStaticPaths() {
+    const { defaultLocale, locales, prefixDefaultLocale } = getLocaleConfig();
+    const posts = await getCollection("blog", (p) => !p.data.draft);
+
+    const localesWithPosts = locales.filter((locale) =>
+        posts.some((p) => p.data.lang === locale),
+    );
+
+    return localesWithPosts.map((locale) => ({
+        params: {
+            locale: locale !== defaultLocale || prefixDefaultLocale ? locale : undefined,
+        },
+        props: {
+            posts: posts
+                .filter((p) => p.data.lang === locale)
+                .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+        },
+    }));
+}
+
+const { posts } = Astro.props;
+---
+
+<Layout title={`${i18n.t("common:pages.blog")} — Ricardo Sanchez Saldivar`}>
+    <div class="mx-auto w-full max-w-9xl px-8 py-24 md:px-48 md:py-32">
+        <h1 class="mb-12 font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl">
+            {i18n.t("common:pages.blog")}
+        </h1>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {
+                posts.map((post) => (
+                    <BlogCard
+                        post={post}
+                        href={getLocalizedPathname(`/blog/${post.id}`, i18n.language)}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</Layout>

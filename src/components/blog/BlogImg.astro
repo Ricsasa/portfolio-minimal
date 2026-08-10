@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+
+/**
+ * Mapped to MDX's default `img` element (see `components` prop on
+ * `<Content />` in `[slug].astro`), so every plain `![]()` in a post body
+ * gets consistent framing without authors needing a custom tag.
+ *
+ * Local images referenced by relative path are optimized by `@astrojs/mdx`
+ * before this component ever sees them, arriving as an `ImageMetadata`
+ * object rather than a string — remote images stay as a plain URL string.
+ */
+interface Props {
+    src: ImageMetadata | string;
+    alt?: string;
+    width?: number;
+    height?: number;
+}
+
+const { src, alt = "", width, height } = Astro.props;
+const isLocal = typeof src !== "string";
+const frameClass = "w-full rounded-lg border border-(--color-border-subtle)";
+---
+
+{
+    isLocal ? (
+        <Image src={src} alt={alt} class={frameClass} />
+    ) : (
+        <img src={src} alt={alt} width={width} height={height} class={frameClass} />
+    )
+}

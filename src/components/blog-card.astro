@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+/**
+ * List-item card for the blog index, built on the shared `.card` surface.
+ * Colors are left as plain defaults — final visual design happens separately.
+ */
+interface Props {
+    post: CollectionEntry<"blog">;
+    href: string;
+}
+
+const { post, href } = Astro.props;
+const { title, description, pubDate, tags = [], cover, coverAlt } = post.data;
+
+const dateFormatter = new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+---
+
+<a href={href} class="card flex flex-col gap-3">
+    {
+        cover && (
+            <Image
+                src={cover}
+                alt={coverAlt ?? ""}
+                class="aspect-video w-full rounded-lg object-cover"
+            />
+        )
+    }
+    <div class="text-xs text-black-secondary">
+        <time datetime={pubDate.toISOString()}>{dateFormatter.format(pubDate)}</time>
+    </div>
+    <h3 class="text-xl font-bold text-black-tertiary">{title}</h3>
+    <p class="text-sm text-black-secondary">{description}</p>
+    {
+        tags.length > 0 && (
+            <div class="flex flex-wrap gap-1.5">
+                {tags.map((tag) => (
+                    <span class="tag">{tag}</span>
+                ))}
+            </div>
+        )
+    }
+</a>

@@ -26,9 +26,12 @@ const { locales = [] } = getLocaleConfig() ?? {};
 const currentLocale = i18n.language;
 
 // The route without any locale prefix, so it can be re-localized per language.
+// `/blog/[slug]` isn't in `links` (no per-post cross-locale mapping yet), so
+// falling back to the blog index is the correct interim behavior for it.
+const localeStrippedCurrent = normalize(getLocalizedPathname(current, ""));
 const basePath =
     links.find(({ href }) => normalize(getLocalizedPathname(href)) === current)
-        ?.href ?? "/";
+        ?.href ?? (localeStrippedCurrent.startsWith("/blog") ? "/blog" : "/");
 
 const localeLabels: Record<string, string> = {
     "en-US": "EN",
