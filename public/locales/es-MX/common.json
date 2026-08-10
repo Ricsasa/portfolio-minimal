@@ -27,6 +27,10 @@
     "platforms-label": "Plataformas e Infraestructura",
     "ai-label": "Herramientas de IA"
   },
+  "blog": {
+    "filter-all-label": "Todos",
+    "filter-empty-label": "Aún no hay artículos con esta etiqueta."
+  },
   "education": {
     "education-label": "Educación y certificaciones",
     "languages-label": "Idiomas",

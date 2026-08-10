@@ -4,14 +4,18 @@ import type { CollectionEntry } from "astro:content";
 
 /**
  * List-item card for the blog index, built on the shared `.card` surface.
+ * The title is a "stretched link" covering the whole card; tag pills are
+ * separate real links stacked above it via z-index, since anchors cannot nest.
  * Colors are left as plain defaults — final visual design happens separately.
  */
 interface Props {
     post: CollectionEntry<"blog">;
     href: string;
+    /** Localized blog index pathname, used to build `?tag=` links for each tag pill. */
+    tagsIndexHref?: string;
 }
 
-const { post, href } = Astro.props;
+const { post, href, tagsIndexHref } = Astro.props;
 const { title, description, pubDate, tags = [], cover, coverAlt } = post.data;
 
 const dateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -21,7 +25,7 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
 });
 ---
 
-<a href={href} class="card flex flex-col gap-3">
+<div class="card relative flex flex-col gap-3">
     {
         cover && (
             <Image
@@ -34,15 +38,28 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
     <div class="text-xs text-black-secondary">
         <time datetime={pubDate.toISOString()}>{dateFormatter.format(pubDate)}</time>
     </div>
-    <h3 class="text-xl font-bold text-black-tertiary">{title}</h3>
+    <h3 class="text-xl font-bold text-black-tertiary">
+        <a href={href} class="static after:absolute after:inset-0">
+            {title}
+        </a>
+    </h3>
     <p class="text-sm text-black-secondary">{description}</p>
     {
         tags.length > 0 && (
-            <div class="flex flex-wrap gap-1.5">
-                {tags.map((tag) => (
-                    <span class="tag">{tag}</span>
-                ))}
+            <div class="relative flex flex-wrap gap-1.5">
+                {tags.map((tag) =>
+                    tagsIndexHref ? (
+                        <a
+                            href={`${tagsIndexHref}?tag=${encodeURIComponent(tag)}`}
+                            class="tag relative z-10 transition hover:bg-black-tertiary hover:text-white"
+                        >
+                            {tag}
+                        </a>
+                    ) : (
+                        <span class="tag">{tag}</span>
+                    ),
+                )}
             </div>
         )
     }
-</a>
+</div>

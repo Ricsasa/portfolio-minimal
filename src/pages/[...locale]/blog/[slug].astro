@@ -1,5 +1,6 @@
 ---
-import { getLocaleConfig } from "astro-react-i18next/utils";
+import i18n from "i18next";
+import { getLocaleConfig, getLocalizedPathname } from "astro-react-i18next/utils";
 import { getCollection, render } from "astro:content";
 
 import BlogLayout from "../../../layouts/BlogLayout.astro";
@@ -33,6 +34,7 @@ const { title, description, pubDate, updatedDate, tags, cover } = post.data;
 const { Content } = await render(post);
 
 const ogImage = cover ? new URL(cover.src, Astro.site).href : undefined;
+const blogIndexHref = getLocalizedPathname("/blog", i18n.language);
 ---
 
 <BlogLayout
@@ -41,6 +43,7 @@ const ogImage = cover ? new URL(cover.src, Astro.site).href : undefined;
     pubDate={pubDate}
     updatedDate={updatedDate}
     tags={tags}
+    tagsIndexHref={blogIndexHref}
     ogImage={ogImage}
 >
     <Content components={{ img: BlogImg, blockquote: Callout, Figure, Callout }} />

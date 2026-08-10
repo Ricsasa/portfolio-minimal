@@ -13,6 +13,8 @@ interface Props {
     pubDate: Date;
     updatedDate?: Date;
     tags?: string[];
+    /** Localized blog index pathname; when set, tags link to `?tag=` filtered results. */
+    tagsIndexHref?: string;
     ogImage?: string;
     canonicalURL?: string;
     bgColor?: string;
@@ -25,6 +27,7 @@ const {
     pubDate,
     updatedDate,
     tags = [],
+    tagsIndexHref,
     ogImage,
     canonicalURL,
     bgColor,
@@ -70,9 +73,18 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
             {
                 tags.length > 0 && (
                     <div class="flex flex-wrap gap-1.5">
-                        {tags.map((tag) => (
-                            <span class="tag">{tag}</span>
-                        ))}
+                        {tags.map((tag) =>
+                            tagsIndexHref ? (
+                                <a
+                                    href={`${tagsIndexHref}?tag=${encodeURIComponent(tag)}`}
+                                    class="tag transition hover:bg-black-tertiary hover:text-white"
+                                >
+                                    {tag}
+                                </a>
+                            ) : (
+                                <span class="tag">{tag}</span>
+                            ),
+                        )}
                     </div>
                 )
             }

@@ -27,6 +27,10 @@
     "platforms-label": "Platforms & Infrastructure",
     "ai-label": "AI Tools"
   },
+  "blog": {
+    "filter-all-label": "All",
+    "filter-empty-label": "No posts with this tag yet."
+  },
   "education": {
     "education-label": "Education and certifications",
     "languages-label": "Languages",

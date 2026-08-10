@@ -27,6 +27,11 @@ export async function getStaticPaths() {
 }
 
 const { posts } = Astro.props;
+
+const blogIndexHref = getLocalizedPathname("/blog", i18n.language);
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b) =>
+    a.localeCompare(b),
+);
 ---
 
 <Layout title={`${i18n.t("common:pages.blog")} — Ricardo Sanchez Saldivar`}>
@@ -34,15 +39,97 @@ const { posts } = Astro.props;
         <h1 class="mb-12 font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl">
             {i18n.t("common:pages.blog")}
         </h1>
+        {
+            allTags.length > 0 && (
+                <div
+                    class="mb-10 flex flex-wrap gap-2"
+                    data-tag-filter
+                    data-tag-filter-base={blogIndexHref}
+                >
+                    <a
+                        href={blogIndexHref}
+                        data-tag-filter-option
+                        data-tag=""
+                        aria-current="true"
+                        class="tag transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                    >
+                        {i18n.t("common:blog.filter-all-label")}
+                    </a>
+                    {allTags.map((tag) => (
+                        <a
+                            href={`${blogIndexHref}?tag=${encodeURIComponent(tag)}`}
+                            data-tag-filter-option
+                            data-tag={tag}
+                            aria-current="false"
+                            class="tag transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                        >
+                            {tag}
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+        <p data-tag-filter-empty class="hidden text-sm text-black-secondary">
+            {i18n.t("common:blog.filter-empty-label")}
+        </p>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             {
                 posts.map((post) => (
-                    <BlogCard
-                        post={post}
-                        href={getLocalizedPathname(`/blog/${post.id}`, i18n.language)}
-                    />
+                    <div data-tag-filter-item data-tags={post.data.tags.join("|")}>
+                        <BlogCard
+                            post={post}
+                            href={getLocalizedPathname(`/blog/${post.id}`, i18n.language)}
+                            tagsIndexHref={blogIndexHref}
+                        />
+                    </div>
                 ))
             }
         </div>
     </div>
 </Layout>
+
+<script>
+    function setupTagFilter(container: HTMLElement): void {
+        const items = Array.from(
+            document.querySelectorAll<HTMLElement>("[data-tag-filter-item]"),
+        );
+        const empty = document.querySelector<HTMLElement>("[data-tag-filter-empty]");
+        const options = Array.from(
+            container.querySelectorAll<HTMLAnchorElement>("[data-tag-filter-option]"),
+        );
+        const base = container.dataset.tagFilterBase ?? window.location.pathname;
+
+        const applyTag = (tag: string): void => {
+            let visible = 0;
+
+            items.forEach((item) => {
+                const tags = (item.dataset.tags ?? "").split("|").filter(Boolean);
+                const show = tag === "" || tags.includes(tag);
+                item.classList.toggle("hidden", !show);
+                if (show) visible += 1;
+            });
+
+            options.forEach((option) => {
+                option.setAttribute("aria-current", String((option.dataset.tag ?? "") === tag));
+            });
+
+            empty?.classList.toggle("hidden", visible !== 0);
+        };
+
+        options.forEach((option) => {
+            option.addEventListener("click", (event) => {
+                event.preventDefault();
+                const tag = option.dataset.tag ?? "";
+                const url = new URL(base, window.location.origin);
+                if (tag) url.searchParams.set("tag", tag);
+                window.history.replaceState(null, "", url);
+                applyTag(tag);
+            });
+        });
+
+        applyTag(new URLSearchParams(window.location.search).get("tag") ?? "");
+    }
+
+    const container = document.querySelector<HTMLElement>("[data-tag-filter]");
+    if (container) setupTagFilter(container);
+</script>
