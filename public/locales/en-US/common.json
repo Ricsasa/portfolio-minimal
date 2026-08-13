@@ -17,6 +17,7 @@
     "close-label": "Close"
   },
   "experience": {
+    "activities-label": "Activities",
     "technologies-label": "Technologies",
     "achievements-label": "Achievements",
     "additional-activities-label": "Additional activities"
@@ -69,7 +70,7 @@
   },
   "menu-label": "Menu",
   "download-label": "Download Resume",
-  "hi-label": "Hi! I'm Ricardo",
+  "hi-label": "Ricardo Sánchez",
   "summary-text": "Fullstack Software Engineer, focused on developing scalable and performant systems. Experienced and currently interested in technologies like React, React Native, NodeJs, Apollo GraphQL, PHP (Laravel), Elasticsearch, MySQL, PostgreSQL,  and Cloud computing platforms (AWS, GCP)",
   "footer-heading": "Let's work together!",
   "footer-email-label": "ricsasa201@gmail.com",

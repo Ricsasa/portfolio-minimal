@@ -10,9 +10,9 @@ export function initHeaderScroll(): void {
       header.style.boxShadow = "0 2px 8px rgb(0 0 0 / 0.06)";
       header.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
     } else {
-      header.style.backdropFilter = "blur(0px)";
+      header.style.backdropFilter = "blur(12px)";
       header.style.boxShadow = "none";
-      header.style.backgroundColor = "transparent";
+      header.style.backgroundColor = "rgba(255, 255, 255, 0.7)";
     }
   };
 
