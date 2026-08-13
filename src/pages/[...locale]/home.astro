@@ -2,7 +2,7 @@
 import i18n from "i18next";
 import { buildStaticPaths } from "astro-react-i18next/utils";
 
-import SectionAstroComponent from "../../components/section.astro";
+import SectionHeroAstroComponent from "../../components/section-hero.astro";
 import HeroAstroComponent from "../../components/hero.astro";
 
 export function getStaticPaths() {
@@ -10,8 +10,8 @@ export function getStaticPaths() {
 }
 ---
 
-<SectionAstroComponent id="home">
+<SectionHeroAstroComponent id="home">
     <div class="reveal">
         <HeroAstroComponent />
     </div>
-</SectionAstroComponent>
+</SectionHeroAstroComponent>

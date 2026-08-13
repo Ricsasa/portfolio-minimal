@@ -1,0 +1,34 @@
+---
+import { getSection } from "../config/sections";
+
+interface Props {
+	id?: string;
+	bgColor?: string;
+	accentColor?: string;
+	innerClass?: string;
+}
+
+const { id, innerClass } = Astro.props;
+
+const config = id ? getSection(id) : undefined;
+const bgColor = Astro.props.bgColor ?? config?.bgColor ?? "bg-custom-yellow-100";
+const accentColor =
+	Astro.props.accentColor ?? config?.accentColor ?? "custom-yellow-300";
+---
+
+<section
+	id={id}
+	data-section={id}
+	data-accent={`var(--color-${accentColor})`}
+	style={`--section-accent: var(--color-${accentColor})`}
+	class:list={[bgColor, "w-full"]}
+>
+	<div
+		class:list={[
+			"w-full flex flex-col items-center",
+			innerClass,
+		]}
+	>
+		<slot />
+	</div>
+</section>
