@@ -17,6 +17,7 @@
     "close-label": "Close"
   },
   "experience": {
+    "activities-label": "Activities",
     "technologies-label": "Technologies",
     "achievements-label": "Achievements",
     "additional-activities-label": "Additional activities"

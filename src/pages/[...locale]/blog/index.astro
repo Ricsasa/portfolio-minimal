@@ -34,9 +34,16 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
 );
 ---
 
-<Layout title={`${i18n.t("common:pages.blog")} — Ricardo Sanchez Saldivar`}>
-    <div class="mx-auto w-full max-w-9xl px-8 py-24 md:px-48 md:py-32">
-        <h1 class="mb-12 font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl">
+<Layout
+    title={`${i18n.t("common:pages.blog")} — Ricardo Sanchez Saldivar`}
+    bgColor="bg-custom-cream-100"
+    accentColor="custom-cream-300"
+>
+    <div
+        class="mx-auto w-full max-w-9xl px-8 py-24 md:px-48 md:py-32"
+        style="--section-accent: var(--color-custom-cream-300)"
+    >
+        <h1 class="mb-12 border-b border-(--section-accent) pb-6 font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl">
             {i18n.t("common:pages.blog")}
         </h1>
         {
@@ -51,7 +58,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
                         data-tag-filter-option
                         data-tag=""
                         aria-current="true"
-                        class="tag transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                        class="tag bg-custom-cream-100 text-black-tertiary transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
                     >
                         {i18n.t("common:blog.filter-all-label")}
                     </a>
@@ -61,7 +68,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
                             data-tag-filter-option
                             data-tag={tag}
                             aria-current="false"
-                            class="tag transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                            class="tag bg-custom-cream-100 text-black-tertiary transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
                         >
                             {tag}
                         </a>

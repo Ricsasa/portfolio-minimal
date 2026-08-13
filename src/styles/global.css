@@ -24,6 +24,8 @@
     --color-custom-purple-300: #B78CFF;
     --color-custom-coral-100: #FFE0D6;
     --color-custom-coral-300: #FF9B7A;
+    --color-custom-cream-100: #FDF6E3;
+    --color-custom-cream-300: #E3D5B0;
 
     /* Hairline used by every card and divider. Kept as an alpha so it reads
        the same over each of the section bands. */
@@ -49,8 +51,8 @@
 }
 
 /* accentColor is composed at runtime, so these can't be found by scanning */
-@source inline("hover:{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral}-{100,300}");
-@source inline("{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral}-{100,300}");
+@source inline("hover:{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral,custom-cream}-{100,300}");
+@source inline("{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral,custom-cream}-{100,300}");
 
 @plugin "@iconify/tailwind4";
 
