@@ -53,11 +53,11 @@ const groups = [
 
 <SectionAstroComponent id="skills" bgColor="bg-purple-100">
     <TitleAstroComponent title={i18n.t("common:pages.skills")} />
-    <div class="flex flex-col gap-16">
+    <div class="flex flex-col gap-16 items-center w-full">
         {
             groups.map((group, index) => (
                 <div
-                    class="reveal flex flex-col gap-12 md:grid md:grid-cols-5 md:grid-rows-1 w-7-xl items-start"
+                    class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start"
                     style={`--index: ${index}`}
                 >
                     <SkillGroupAstroComponent

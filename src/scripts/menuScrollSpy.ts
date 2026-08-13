@@ -30,9 +30,38 @@ export function initMenuScrollSpy() {
       if (linkId === id) {
         link.setAttribute("data-active", "true");
         link.setAttribute("aria-current", "true");
+
+        const indicator = link.querySelector<HTMLElement>("[aria-hidden='true']");
+        if (indicator) {
+          gsap.to(indicator, {
+            scale: 1.3,
+            duration: 0.3,
+            ease: "back.out",
+          });
+          gsap.to(indicator, {
+            scale: 1,
+            duration: 0.2,
+            delay: 0.1,
+            ease: "elastic.out(1, 0.5)",
+          });
+          gsap.to(indicator, {
+            boxShadow: `0 0 12px var(--header-accent)`,
+            duration: 0.4,
+            ease: "power1.inOut",
+          });
+        }
       } else {
         link.removeAttribute("data-active");
         link.removeAttribute("aria-current");
+
+        const indicator = link.querySelector<HTMLElement>("[aria-hidden='true']");
+        if (indicator) {
+          gsap.to(indicator, {
+            boxShadow: "0 0 0px transparent",
+            duration: 0.3,
+            ease: "power1.inOut",
+          });
+        }
       }
     });
 

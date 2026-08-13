@@ -43,9 +43,11 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
         class="mx-auto w-full max-w-9xl px-8 py-24 md:px-48 md:py-32"
         style="--section-accent: var(--color-custom-cream-300)"
     >
-        <h1 class="mb-12 border-b border-(--section-accent) pb-6 font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl">
-            {i18n.t("common:pages.blog")}
-        </h1>
+        <div class="w-full mb-12 md:mb-36 text-center">
+            <h1 class="font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl border-b border-(--section-accent) pb-6 inline-block">
+                {i18n.t("common:pages.blog")}
+            </h1>
+        </div>
         {
             allTags.length > 0 && (
                 <div
