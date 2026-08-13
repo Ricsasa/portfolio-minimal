@@ -9,6 +9,8 @@ const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
 const isHomePage =
     normalize(getLocalizedPathname(Astro.url.pathname, "")) === "/";
 
+const isBlogPage = normalize(getLocalizedPathname(Astro.url.pathname, "")).startsWith("/blog");
+
 const hasBlogPosts =
     (
         await getCollection(
@@ -47,9 +49,14 @@ const blogHref = getLocalizedPathname("/blog", i18n.language);
                 <li>
                     <a
                         href={blogHref}
-                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary"
+                        data-active={isBlogPage ? "true" : undefined}
+                        aria-current={isBlogPage ? "true" : undefined}
+                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-black-primary"
                     >
-                        <span aria-hidden="true" class="size-3 shrink-0 rounded-full opacity-0" />
+                        <span
+                            aria-hidden="true"
+                            class="size-3 shrink-0 rounded-full bg-(--header-accent) opacity-0 transition-opacity duration-300 group-data-[active=true]:opacity-100"
+                        />
                         <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-(--header-accent)">
                             {i18n.t("common:pages.blog")}
                         </span>
