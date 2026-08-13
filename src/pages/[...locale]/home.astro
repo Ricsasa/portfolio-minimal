@@ -2,12 +2,8 @@
 import i18n from "i18next";
 import { buildStaticPaths } from "astro-react-i18next/utils";
 
-import { Image } from "astro:assets";
-
-import Me from "../../assets/me.avif";
-
-import TitleAstroComponent from "../../components/title.astro";
 import SectionAstroComponent from "../../components/section.astro";
+import HeroAstroComponent from "../../components/hero.astro";
 
 export function getStaticPaths() {
     return buildStaticPaths();
@@ -15,19 +11,7 @@ export function getStaticPaths() {
 ---
 
 <SectionAstroComponent id="home">
-    <TitleAstroComponent title={i18n.t("hi-label")} />
-    <div class="reveal flex flex-col gap-12">
-        <div class="flex mx-auto md:mx-0">
-            <Image
-                src={Me}
-                alt="Me"
-                class="h-70 w-70 object-contain grayscale hover:filter-none"
-                format="avif"
-                title="Me"
-            />
-        </div>
-        <p class="text-xl">
-            {i18n.t("summary-text")}
-        </p>
+    <div class="reveal">
+        <HeroAstroComponent />
     </div>
 </SectionAstroComponent>

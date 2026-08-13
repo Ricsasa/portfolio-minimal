@@ -37,10 +37,17 @@ const toList = (value?: string | string[]) =>
             projects.map((project) => (
                 <li class="text-[13px] text-black-tertiary">
                     <span class="font-bold">{project.name}</span>
+                    <details class="mt-1 pl-4.5">
+                        <summary class="-mx-1 cursor-pointer select-none rounded px-1 font-bold transition-colors duration-300 marker:text-black-secondary hover:bg-(--section-accent)">
+                            {i18n.t("experience.activities-label")} ({project.activities.length})
+                        </summary>
+                        <ul class="list-[circle] pl-4.5 mt-1 flex flex-col gap-1">
+                            {project.activities.map((activity) => (
+                                <li>{activity}</li>
+                            ))}
+                        </ul>
+                    </details>
                     <ul class="list-[circle] pl-4.5 mt-1 flex flex-col gap-1">
-                        {project.activities.map((activity) => (
-                            <li>{activity}</li>
-                        ))}
                         <li>
                             <span class="font-bold">
                                 {i18n.t("experience.technologies-label")}:
@@ -63,18 +70,18 @@ const toList = (value?: string | string[]) =>
 
     {
         additionalActivities && additionalActivities.length > 0 && (
-            <div>
-                <h4 class="text-xs font-bold uppercase text-black-secondary mb-2.5">
-                    {i18n.t("experience.additional-activities-label")}
-                </h4>
-                <ul class="list-disc pl-4.5 flex flex-col gap-1">
+            <details>
+                <summary class="-mx-1 mb-2.5 cursor-pointer select-none rounded px-1 text-xs font-bold uppercase text-black-secondary transition-colors duration-300 hover:bg-(--section-accent)">
+                    {i18n.t("experience.additional-activities-label")} ({additionalActivities.length})
+                </summary>
+                <ul class="list-disc pl-4.5 mt-2.5 flex flex-col gap-1">
                     {additionalActivities.map((activity) => (
                         <li class="text-[13px] text-black-tertiary">
                             {activity}
                         </li>
                     ))}
                 </ul>
-            </div>
+            </details>
         )
     }
 </div>
