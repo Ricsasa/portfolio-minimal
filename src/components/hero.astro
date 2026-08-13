@@ -10,18 +10,29 @@ interface Props {
 const { accentColor = "custom-yellow-300" } = Astro.props;
 ---
 
-<div class="relative w-full flex flex-col items-center min-h-screen justify-start gap-0" style="padding: clamp(5rem, 8vw, 4rem) clamp(1rem, 5vw, 3rem) 0;">
-	<div class="flex flex-col items-center text-center w-full" style="gap: clamp(0.5rem, 2vw, 1.5rem); padding-bottom: clamp(0.5rem, 3vw, 2rem);">
-		<h1 class="font-sans font-black uppercase tracking-[-0.02em] flex justify-center flex-wrap m-0" style="font-size: clamp(2rem, 12vw, 7rem); gap: clamp(0.25rem, 2vw, 0.5rem);">
+<style>
+	.hero-title {
+		font-size: clamp(2.5rem, 14vw, 7rem);
+	}
+	@media (max-width: 768px) {
+		.hero-title {
+			font-size: clamp(1.8rem, 10vw, 5rem);
+		}
+	}
+</style>
+
+<div class="relative w-full h-screen flex flex-col items-center" style="padding: clamp(3rem, 10vh, 6rem) clamp(1rem, 5vw, 3rem) 0;">
+	<div class="flex flex-col items-center text-center w-full" style="gap: clamp(0.75rem, 2vh, 1.5rem);">
+		<h1 class="hero-title font-sans font-black uppercase tracking-[-0.02em] flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem);">
 			<span style="color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">Ricardo</span>
 			<span style="color: var(--color-black-primary); font-weight: 900;">Sánchez</span>
 		</h1>
 
-		<p class="m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.5rem, 1.5vw, 0.75rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
+		<p class="m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
 	</div>
 
-	<div class="flex items-center justify-center mt-auto" style="width: clamp(90vw, 95vw, 800px); height: clamp(50vh, 70vh, 800px);">
-		<Image src={Subject} alt="Ricardo" class="w-full h-full object-contain grayscale drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out hover:drop-shadow-[0_12px_32px_rgba(0,0,0,0.16)] hover:-translate-y-2" />
+	<div class="absolute bottom-0 left-0 right-0 flex items-center justify-center" style="height: clamp(25vh, 35vh, 400px); padding: 0 clamp(1rem, 5vw, 3rem);">
+		<Image src={Subject} alt="Ricardo" class="w-full h-full object-contain grayscale drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]" />
 	</div>
 
 </div>
