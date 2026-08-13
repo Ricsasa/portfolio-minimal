@@ -51,12 +51,12 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
                     tagsIndexHref ? (
                         <a
                             href={`${tagsIndexHref}?tag=${encodeURIComponent(tag)}`}
-                            class="tag relative z-10 transition hover:bg-black-tertiary hover:text-white"
+                            class="tag relative z-10 bg-custom-cream-100 text-black-tertiary transition hover:bg-black-tertiary hover:text-white"
                         >
                             {tag}
                         </a>
                     ) : (
-                        <span class="tag">{tag}</span>
+                        <span class="tag bg-custom-cream-100 text-black-tertiary">{tag}</span>
                     ),
                 )}
             </div>

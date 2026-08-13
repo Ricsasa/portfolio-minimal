@@ -2,10 +2,10 @@
 const { title } = Astro.props;
 ---
 
-<div class="md:col-span-3 items-center mb-12 md:mb-36">
+<div class="w-full mb-12 md:mb-36 text-center">
     {
         title && (
-            <h1 class="font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl border-b border-(--section-accent) pb-6">
+            <h1 class="font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl border-b border-(--section-accent) pb-6 inline-block">
                 {title}
             </h1>
         )
