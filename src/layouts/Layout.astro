@@ -52,17 +52,54 @@ const {
 		<title>{title}</title>
 		{description && <meta name="description" content={description} />}
 		<link rel="canonical" href={canonicalURL} />
+		<meta name="author" content="Ricardo Sánchez Saldivar" />
 
+		<meta property="og:site_name" content="Ricardo Sánchez Saldivar" />
 		<meta property="og:title" content={title} />
 		{description && <meta property="og:description" content={description} />}
 		<meta property="og:type" content={ogType} />
 		<meta property="og:url" content={canonicalURL} />
-		{ogImage && <meta property="og:image" content={ogImage} />}
-		<meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+		<meta property="og:image" content={ogImage || "https://ricsasa.work/og-image.webp"} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="1111" />
+		<meta property="og:image:type" content="image/webp" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@ricsasa" />
+		<meta name="twitter:creator" content="@ricsasa" />
+		<meta name="twitter:title" content={title} />
+		{description && <meta name="twitter:description" content={description} />}
+		<meta name="twitter:image" content={ogImage || "https://ricsasa.work/og-image.webp"} />
 
 		<Font cssVariable="--font-literata" preload />
 		<Font cssVariable="--font-nunito" preload />
 		<Font cssVariable="--font-share-tech" preload />
+
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Ricardo Sánchez Saldivar",
+			"jobTitle": "Full Stack Engineer",
+			"url": "https://ricsasa.work",
+			"email": "ricsasa201@gmail.com",
+			"image": "https://ricsasa.work/og-image.webp",
+			"sameAs": [
+				"https://linkedin.com/in/ricardosanchezsaldivar",
+				"https://github.com/ricsasa",
+				"https://twitter.com/ricsasa"
+			],
+			"knowsAbout": [
+				"Full Stack Development",
+				"Web Development",
+				"React",
+				"Node.js",
+				"TypeScript",
+				"Astro",
+				"Tailwind CSS"
+			]
+		}
+		</script>
 	</head>
 	<body class:list={[bgColor]}>
 		<Header accentColor={accentColor} />
