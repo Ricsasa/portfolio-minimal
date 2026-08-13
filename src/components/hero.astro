@@ -16,22 +16,24 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
 	}
 	@media (max-width: 768px) {
 		.hero-title {
-			font-size: clamp(1.8rem, 10vw, 5rem);
+			font-size: clamp(1.8rem, 15vw, 5rem);
 		}
+	}
+	.hero-image {
+		height: clamp(30svh, 40svh, 500px);
 	}
 </style>
 
 <div class="relative w-full h-screen flex flex-col items-center" style="padding: clamp(3rem, 10vh, 6rem) clamp(1rem, 5vw, 3rem) 0;">
 	<div class="flex flex-col items-center text-center w-full" style="gap: clamp(0.75rem, 2vh, 1.5rem);">
-		<h1 class="hero-title font-sans font-black uppercase tracking-[-0.02em] flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem);">
-			<span style="color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">Ricardo</span>
-			<span style="color: var(--color-black-primary); font-weight: 900;">Sánchez</span>
+		<h1 class="hero-title font-sans font-black uppercase tracking-tighter leading-none flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem); color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">
+			Ricardo<span style="color: var(--color-black-primary);">Sánchez</span>
 		</h1>
 
 		<p class="m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
 	</div>
 
-	<div class="absolute bottom-0 left-0 right-0 flex items-center justify-center" style="height: clamp(25vh, 35vh, 400px); padding: 0 clamp(1rem, 5vw, 3rem);">
+	<div class="hero-image absolute bottom-0 left-0 right-0 flex items-center justify-center max-md:bottom-12 max-md:p-0" style="padding: 0 clamp(1rem, 5vw, 3rem);">
 		<Image src={Subject} alt="Ricardo" class="w-full h-full object-contain grayscale drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]" />
 	</div>
 
