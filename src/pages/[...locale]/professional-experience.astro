@@ -12,7 +12,8 @@ export function getStaticPaths() {
 }
 
 /** Entries live in public/locales/<locale>/professional-experiences.json. */
-const experiences = ["sabbatical", "salesloft", "tiempo", "epam"].map(
+const experienceKeys = ["sabbatical", "salesloft", "tiempo", "epam"] as const;
+const experiences = experienceKeys.map(
     (key) =>
         i18n.t(`professional-experiences:${key}`, {
             returnObjects: true,
@@ -36,6 +37,8 @@ const experiences = ["sabbatical", "salesloft", "tiempo", "epam"].map(
                         years={experience.years}
                         projects={experience.projects}
                         additionalActivities={experience.additionalActivities}
+                        slug={experienceKeys[index]}
+                        compact
                     />
                 </div>
             ))

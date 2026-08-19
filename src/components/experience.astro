@@ -1,5 +1,6 @@
 ---
 import i18n from "i18next";
+import { getLocalizedPathname } from "astro-react-i18next/utils";
 
 export interface Project {
     name: string;
@@ -16,9 +17,12 @@ export interface Experience {
     additionalActivities?: string[];
 }
 
-type Props = Experience;
+type Props = Experience & { slug?: string; compact?: boolean };
 
-const { role, company, years, projects, additionalActivities } = Astro.props;
+const { role, company, years, projects, additionalActivities, slug, compact = false } = Astro.props;
+const detailHref = slug
+    ? getLocalizedPathname(`/professional-experiences/${slug}`, i18n.language)
+    : undefined;
 
 const toList = (value?: string | string[]) =>
     value === undefined ? [] : Array.isArray(value) ? value : [value];
@@ -32,56 +36,61 @@ const toList = (value?: string | string[]) =>
         <h3 class="text-xl font-bold text-black-tertiary">{role}</h3>
     </div>
 
-    <ul class="list-disc pl-4.5 flex flex-col gap-3">
-        {
-            projects.map((project) => (
-                <li class="text-[13px] text-black-tertiary">
-                    <span class="font-bold">{project.name}</span>
-                    <details class="mt-1 pl-4.5">
-                        <summary class="-mx-1 cursor-pointer select-none rounded px-1 font-bold transition-colors duration-300 marker:text-black-secondary hover:bg-(--section-accent)">
-                            {i18n.t("experience.activities-label")} ({project.activities.length})
-                        </summary>
-                        <ul class="list-[circle] pl-4.5 mt-1 flex flex-col gap-1">
+    {
+        !compact && (
+            <div class="flex flex-col gap-4">
+                {projects.map((project) => (
+                    <div class="border border-black-tertiary/15 rounded-lg p-4 flex flex-col gap-2">
+                        <span class="font-bold text-sm text-black-tertiary">{project.name}</span>
+                        <ul class="list-[circle] pl-4.5 flex flex-col gap-1">
                             {project.activities.map((activity) => (
-                                <li>{activity}</li>
+                                <li class="text-[13px] text-black-tertiary">{activity}</li>
                             ))}
                         </ul>
-                    </details>
-                    <ul class="list-[circle] pl-4.5 mt-1 flex flex-col gap-1">
-                        <li>
-                            <span class="font-bold">
-                                {i18n.t("experience.technologies-label")}:
-                            </span>{" "}
-                            {project.technologies.join(", ")}
-                        </li>
-                        {toList(project.achievements).map((achievement) => (
-                            <li>
+                        <ul class="list-[circle] pl-4.5 flex flex-col gap-1">
+                            <li class="text-[13px] text-black-tertiary">
                                 <span class="font-bold">
-                                    {i18n.t("experience.achievements-label")}:
+                                    {i18n.t("experience.technologies-label")}:
                                 </span>{" "}
-                                {achievement}
+                                {project.technologies.join(", ")}
                             </li>
-                        ))}
-                    </ul>
-                </li>
-            ))
-        }
-    </ul>
+                            {toList(project.achievements).map((achievement) => (
+                                <li class="text-[13px] text-black-tertiary">
+                                    <span class="font-bold">
+                                        {i18n.t("experience.achievements-label")}:
+                                    </span>{" "}
+                                    {achievement}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        )
+    }
 
     {
-        additionalActivities && additionalActivities.length > 0 && (
-            <details>
-                <summary class="-mx-1 mb-2.5 cursor-pointer select-none rounded px-1 text-xs font-bold uppercase text-black-secondary transition-colors duration-300 hover:bg-(--section-accent)">
-                    {i18n.t("experience.additional-activities-label")} ({additionalActivities.length})
-                </summary>
-                <ul class="list-disc pl-4.5 mt-2.5 flex flex-col gap-1">
+        !compact && additionalActivities && additionalActivities.length > 0 && (
+            <div class="border border-black-tertiary/15 rounded-lg p-4 flex flex-col gap-2.5">
+                <span class="text-xs font-bold uppercase text-black-secondary">
+                    {i18n.t("experience.additional-activities-label")}
+                </span>
+                <ul class="list-disc pl-4.5 flex flex-col gap-1">
                     {additionalActivities.map((activity) => (
                         <li class="text-[13px] text-black-tertiary">
                             {activity}
                         </li>
                     ))}
                 </ul>
-            </details>
+            </div>
+        )
+    }
+
+    {
+        detailHref && (
+            <a href={detailHref} class="self-start text-sm text-black-primary underline">
+                {i18n.t("experience.details-label")}
+            </a>
         )
     }
 </div>

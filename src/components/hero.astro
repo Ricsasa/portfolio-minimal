@@ -1,13 +1,27 @@
 ---
 import i18n from "i18next";
-import { Image } from "astro:assets";
-import Subject from "../assets/Subject.png";
 
 interface Props {
 	accentColor?: string;
 }
 
 const { accentColor = "custom-yellow-300" } = Astro.props;
+
+const screenshots = [
+	...Array.from({ length: 4 }, (_, i) => `/projects/lumina-admin/${i + 1}.avif`),
+	...Array.from({ length: 8 }, (_, i) => `/projects/lumina-landing/${i + 1}.avif`),
+];
+
+function shuffle<T>(arr: T[]): T[] {
+	const a = [...arr];
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
+}
+
+const carouselImages = shuffle(screenshots);
 ---
 
 <style>
@@ -19,22 +33,111 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
 			font-size: clamp(1.8rem, 15vw, 5rem);
 		}
 	}
-	.hero-image {
+	.hero-carousel {
 		height: clamp(30svh, 40svh, 500px);
+	}
+
+	.hero-carousel-track {
+		height: 100%;
+		width: max-content;
+		gap: clamp(0.5rem, 1.5vw, 1rem);
+		padding: 0 clamp(0.5rem, 1.5vw, 1rem);
+		animation: hero-carousel-scroll 60s linear infinite;
+	}
+
+	.hero-carousel:hover .hero-carousel-track {
+		animation-play-state: paused;
+	}
+
+	.hero-carousel-img {
+		transition: filter 0.3s ease;
+	}
+
+	.hero-carousel:hover .hero-carousel-img:hover {
+		filter: grayscale(0);
+	}
+
+	@keyframes hero-carousel-scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-carousel-track {
+			animation: none;
+		}
+	}
+
+	.hero-anim-title,
+	.hero-anim-subtitle,
+	.hero-anim-image {
+		opacity: 0;
+	}
+
+	.hero-anim-title {
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+	}
+	.hero-anim-subtitle {
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+	}
+	.hero-anim-image {
+		animation: hero-image-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+	}
+
+	@keyframes hero-fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes hero-image-in {
+		from {
+			opacity: 0;
+			transform: translateY(24px) scale(0.97);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-anim-title,
+		.hero-anim-subtitle,
+		.hero-anim-image {
+			animation: none;
+			opacity: 1;
+			transform: none;
+		}
 	}
 </style>
 
-<div class="relative w-full h-screen flex flex-col items-center" style="padding: clamp(3rem, 10vh, 6rem) clamp(1rem, 5vw, 3rem) 0;">
+<div class="relative w-full h-dvh flex flex-col items-center" style="padding: clamp(3rem, 10vh, 6rem) clamp(1rem, 5vw, 3rem) 0;">
 	<div class="flex flex-col items-center text-center w-full" style="gap: clamp(0.75rem, 2vh, 1.5rem);">
-		<h1 class="hero-title font-sans font-black uppercase tracking-tighter leading-none flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem); color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">
+		<h1 class="hero-title hero-anim-title font-sans font-black uppercase tracking-tighter leading-none flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem); color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">
 			Ricardo<span style="color: var(--color-black-primary);">Sánchez</span>
 		</h1>
 
-		<p class="m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
+		<p class="hero-anim-subtitle m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
 	</div>
 
-	<div class="hero-image absolute bottom-0 left-0 right-0 flex items-center justify-center max-md:bottom-12 max-md:p-0" style="padding: 0 clamp(1rem, 5vw, 3rem);">
-		<Image src={Subject} alt="Ricardo" class="w-full h-full object-contain grayscale drop-shadow-[0_8px_24px_rgba(0,0,0,0.12)]" />
+	<div class="hero-carousel hero-anim-image absolute bottom-0 left-1/2 -translate-x-1/2 w-screen overflow-hidden">
+		<div class="hero-carousel-track flex items-end">
+			{
+				[...carouselImages, ...carouselImages].map((src) => (
+					<img src={src} alt="" class="hero-carousel-img h-full w-auto object-cover flex-shrink-0 grayscale" loading="eager" />
+				))
+			}
+		</div>
 	</div>
 
 </div>

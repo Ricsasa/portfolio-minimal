@@ -20,7 +20,8 @@
     "activities-label": "Activities",
     "technologies-label": "Technologies",
     "achievements-label": "Achievements",
-    "additional-activities-label": "Additional activities"
+    "additional-activities-label": "Additional activities",
+    "details-label": "View details"
   },
   "skills": {
     "languages-label": "Languages & Frameworks",
