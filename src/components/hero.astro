@@ -43,6 +43,7 @@ const carouselImages = shuffle(screenshots);
 		gap: clamp(0.5rem, 1.5vw, 1rem);
 		padding: 0 clamp(0.5rem, 1.5vw, 1rem);
 		animation: hero-carousel-scroll 60s linear infinite;
+		clip-path: inset(-100% 0 -100% 0);
 	}
 
 	.hero-carousel:hover .hero-carousel-track {
@@ -50,11 +51,19 @@ const carouselImages = shuffle(screenshots);
 	}
 
 	.hero-carousel-img {
-		transition: filter 0.3s ease;
+		transition: filter 0.3s ease, transform 0.3s ease, margin 0.3s ease;
+	}
+
+	.hero-carousel-img {
+		transform-origin: bottom center;
 	}
 
 	.hero-carousel:hover .hero-carousel-img:hover {
 		filter: grayscale(0);
+		transform: scale(1.2);
+		margin: 0 3rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	@keyframes hero-carousel-scroll {
@@ -130,7 +139,7 @@ const carouselImages = shuffle(screenshots);
 		<p class="hero-anim-subtitle m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
 	</div>
 
-	<div class="hero-carousel hero-anim-image absolute bottom-0 left-1/2 -translate-x-1/2 w-screen overflow-hidden">
+	<div class="hero-carousel hero-anim-image absolute bottom-0 left-1/2 -translate-x-1/2 w-screen">
 		<div class="hero-carousel-track flex items-end">
 			{
 				[...carouselImages, ...carouselImages].map((src) => (
