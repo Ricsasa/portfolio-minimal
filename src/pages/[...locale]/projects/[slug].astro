@@ -1,0 +1,54 @@
+---
+import i18n from "i18next";
+import { getLocaleConfig, getLocalizedPathname } from "astro-react-i18next/utils";
+
+import Layout from "../../../layouts/Layout.astro";
+import Section from "../../../components/section.astro";
+import ProjectAstroComponent from "../../../components/project.astro";
+import type { Project } from "../../../components/project.astro";
+import { slugify } from "../../../utils/slugify";
+
+export async function getStaticPaths() {
+    const { defaultLocale, locales, prefixDefaultLocale } = getLocaleConfig();
+
+    return locales.flatMap((locale: string) => {
+        const t = i18n.getFixedT(locale, "projects");
+        const projects = t("projects", { returnObjects: true }) as Project[];
+
+        return projects.map((project) => ({
+            params: {
+                locale: locale !== defaultLocale || prefixDefaultLocale ? locale : undefined,
+                slug: slugify(project.title),
+            },
+            props: { project },
+        }));
+    });
+}
+
+const { project } = Astro.props;
+const selectedWorkHref = getLocalizedPathname("/#selected-work", i18n.language);
+---
+
+<Layout title={`${project.title} — Ricardo Sánchez Saldivar`} description={project.brief_description}>
+    <Section id="project-detail" bgColor="bg-custom-green-100">
+        <a href={selectedWorkHref} class="self-start text-sm text-black-primary underline">
+            ← {i18n.t("common:pages.selected_work")}
+        </a>
+        <div class="flex flex-col gap-16 items-center w-full">
+            <div class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start">
+                <ProjectAstroComponent
+                    title={project.title}
+                    brief_description={project.brief_description}
+                    full_description={project.full_description}
+                    category={project.category}
+                    year={project.year}
+                    href={project.href}
+                    cta={project.cta}
+                    technologies={project.technologies}
+                    screenshots-prefix={project["screenshots-prefix"]}
+                    linkToDetail={false}
+                />
+            </div>
+        </div>
+    </Section>
+</Layout>
