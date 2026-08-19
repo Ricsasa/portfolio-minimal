@@ -58,12 +58,14 @@ const carouselImages = shuffle(screenshots);
 		transform-origin: bottom center;
 	}
 
-	.hero-carousel:hover .hero-carousel-img:hover {
-		filter: grayscale(0);
-		transform: scale(1.2);
-		margin: 0 3rem;
-		position: relative;
-		z-index: 1;
+	@media (hover: hover) and (pointer: fine) {
+		.hero-carousel:hover .hero-carousel-img:hover {
+			filter: grayscale(0);
+			transform: scale(1.2);
+			margin: 0 3rem;
+			position: relative;
+			z-index: 1;
+		}
 	}
 
 	@keyframes hero-carousel-scroll {
