@@ -68,7 +68,7 @@ const detailHref = getLocalizedPathname(`/projects/${slug}`, i18n.language);
                   <img
                       src={screenshots[0]}
                       alt={title}
-                      class="w-full rounded-lg"
+                      class="w-full rounded-lg grayscale hover:grayscale-0 transition-[filter] duration-300"
                   />
               )
             : screenshots.length > 0 && (
