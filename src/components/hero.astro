@@ -46,8 +46,10 @@ const carouselImages = shuffle(screenshots);
 		clip-path: inset(-100% 0 -100% 0);
 	}
 
-	.hero-carousel:hover .hero-carousel-track {
-		animation-play-state: paused;
+	@media (hover: hover) and (pointer: fine) {
+		.hero-carousel:hover .hero-carousel-track {
+			animation-play-state: paused;
+		}
 	}
 
 	.hero-carousel-img {
