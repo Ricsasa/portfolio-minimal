@@ -76,12 +76,11 @@
         border: 1px solid var(--color-border-subtle);
         border-radius: 0.5rem;
         padding: 2rem;
-        transition: box-shadow 200ms ease, transform 200ms ease-out;
+        transition: box-shadow 200ms ease;
     }
 
     .card:hover {
         box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
-        transform: scale(1.02);
     }
 
     /* Shape and type only; each section supplies its own accent background. */
