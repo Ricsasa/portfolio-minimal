@@ -334,7 +334,14 @@ const controlClass =
             { passive: true },
         );
 
-        window.addEventListener("resize", sync);
+        // iOS fires resize on every frame while the address bar collapses, and
+        // only the height changes there. Skip those: sync depends on the width.
+        let width = track.clientWidth;
+        window.addEventListener("resize", () => {
+            if (track.clientWidth === width) return;
+            width = track.clientWidth;
+            sync();
+        });
 
         previous?.addEventListener("click", () => goTo(index - 1));
         next?.addEventListener("click", () => goTo(index + 1));
