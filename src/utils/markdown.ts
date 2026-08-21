@@ -17,7 +17,7 @@ const CLASSES = {
     strong: "font-bold text-black-tertiary",
     emphasis: "italic",
     code: "font-mono text-xs bg-iris-soft px-1 py-0.5",
-    link: "text-black-primary underline",
+    link: "text-black-primary",
 } as const;
 
 const HEADING_PATTERN = /^(#{1,3})\s+(.*)$/;

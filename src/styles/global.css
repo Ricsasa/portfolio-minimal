@@ -163,4 +163,9 @@
     main a:hover::after {
         transform: scaleX(1);
     }
+
+    /* A row with an overlay link animates its call to action on row hover. */
+    main .group:hover [data-row-cta]::after {
+        transform: scaleX(1);
+    }
 }

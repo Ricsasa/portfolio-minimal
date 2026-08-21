@@ -33,7 +33,14 @@ const toList = (value?: string | string[]) =>
     value === undefined ? [] : Array.isArray(value) ? value : [value];
 ---
 
-<div class="w-full md:col-span-12 flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-10 md:items-start">
+<div class="group relative w-full md:col-span-12 flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-10 md:items-start">
+    {/* Overlay link: the whole row opens the detail page. */}
+    {
+        detailHref && (
+            <a href={detailHref} aria-label={role} class="absolute inset-0 z-10 after:hidden" />
+        )
+    }
+
     {/* Company and dates sit on their own rail so the roles read as a timeline. */}
     <div class="flex flex-col md:col-span-3 md:sticky md:top-24 md:text-right">
         <span class="text-xs uppercase tracking-[0.08em] text-iris">
@@ -103,7 +110,7 @@ const toList = (value?: string | string[]) =>
 
         {
             detailHref && (
-                <a href={detailHref} class="self-start text-sm text-pine underline">
+                <a href={detailHref} data-row-cta class="relative z-20 self-start text-sm text-pine">
                     {i18n.t("experience.details-label")}
                 </a>
             )

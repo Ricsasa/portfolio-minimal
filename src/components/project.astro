@@ -13,8 +13,6 @@ export interface Project {
     full_description?: string;
     category: string;
     year: string;
-    href?: string;
-    cta?: string;
     technologies?: string[];
     "screenshots-prefix"?: string;
 }
@@ -32,8 +30,6 @@ const {
     full_description,
     category,
     year,
-    href,
-    cta,
     technologies = [],
     "screenshots-prefix": screenshotsPrefix,
     linkToDetail = true,
@@ -47,7 +43,18 @@ const carouselId = `screenshots-${slug}`;
 const detailHref = getLocalizedPathname(`/projects/${slug}`, i18n.language);
 ---
 
-<div class="w-full md:col-span-12 flex flex-col gap-6 border-t border-border-rule pt-10 md:grid md:grid-cols-12 md:gap-10 md:items-start">
+<div class="group relative w-full md:col-span-12 flex flex-col gap-6 border-t border-border-rule pt-10 md:grid md:grid-cols-12 md:gap-10 md:items-start">
+    {/* Overlay link: the whole row opens the detail page. */}
+    {
+        linkToDetail && (
+            <a
+                href={detailHref}
+                aria-label={title}
+                class="absolute inset-0 z-10 after:hidden"
+            />
+        )
+    }
+
     {/* The identity rail holds while the body scrolls past it. */}
     <div class="flex flex-col gap-3 md:col-span-4 md:sticky md:top-24">
         <div class="text-xs uppercase tracking-[0.08em] text-iris">
@@ -74,21 +81,8 @@ const detailHref = getLocalizedPathname(`/projects/${slug}`, i18n.language);
         }
 
         {
-            !compact && href && cta && (
-                <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="self-start text-sm text-pine underline"
-                >
-                    {cta} ↗
-                </a>
-            )
-        }
-
-        {
             linkToDetail && (
-                <a href={detailHref} class="self-start text-sm text-pine underline">
+                <a href={detailHref} data-row-cta class="relative z-20 self-start text-sm text-pine">
                     {i18n.t("projects:details-label")}
                 </a>
             )
