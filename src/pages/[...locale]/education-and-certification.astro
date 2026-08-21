@@ -31,15 +31,13 @@ const languageItems = i18n.t("common:education.language-items", {
 }) as LanguageItem[];
 ---
 
-<SectionAstroComponent id="education-and-certification" bgColor="bg-custom-coral-100">
+<SectionAstroComponent id="education-and-certification" bgColor="bg-paper">
     <TitleAstroComponent title={i18n.t("common:pages.education_and_certification")} />
 
-    <div class="flex flex-col gap-16 items-center w-full">
-        <div
-            class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start"
-            style="--index: 0"
-        >
-            <div class="card col-span-8 col-start-3 flex flex-col gap-4">
+    {/* Two cells, sized to the two lists. Cards earn their keep only here. */}
+    <div class="grid w-full grid-cols-1 gap-6 md:grid-cols-12 md:items-start">
+        <div class="reveal md:col-span-7" style="--index: 0">
+            <div class="card flex h-full flex-col gap-4">
                 <h3 class="text-xl font-bold text-black-tertiary">
                     {i18n.t("common:education.education-label")}
                 </h3>
@@ -57,7 +55,7 @@ const languageItems = i18n.t("common:education.language-items", {
                                         {item.location && ` · ${item.location}`}
                                     </div>
                                 </div>
-                                <span class="text-xs text-black-secondary">
+                                <span class="text-xs text-iris">
                                     {item.period}
                                 </span>
                             </div>
@@ -67,11 +65,8 @@ const languageItems = i18n.t("common:education.language-items", {
             </div>
         </div>
 
-        <div
-            class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start"
-            style="--index: 1"
-        >
-            <div class="card col-span-8 col-start-3 flex flex-col gap-4">
+        <div class="reveal md:col-span-5" style="--index: 1">
+            <div class="card flex h-full flex-col gap-4">
                 <h3 class="text-xl font-bold text-black-tertiary">
                     {i18n.t("common:education.languages-label")}
                 </h3>
@@ -79,7 +74,7 @@ const languageItems = i18n.t("common:education.language-items", {
                 <div class="flex flex-wrap gap-1.5">
                     {
                         languageItems.map((item) => (
-                            <span class="tag bg-custom-coral-100 text-black-tertiary">
+                            <span class="tag bg-iris-soft text-iris">
                                 {`${item.language} - ${item.proficiency}`}
                             </span>
                         ))

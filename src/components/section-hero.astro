@@ -11,9 +11,9 @@ interface Props {
 const { id, innerClass } = Astro.props;
 
 const config = id ? getSection(id) : undefined;
-const bgColor = Astro.props.bgColor ?? config?.bgColor ?? "bg-custom-yellow-100";
+const bgColor = Astro.props.bgColor ?? config?.bgColor ?? "bg-paper";
 const accentColor =
-	Astro.props.accentColor ?? config?.accentColor ?? "custom-yellow-300";
+	Astro.props.accentColor ?? config?.accentColor ?? "pine";
 ---
 
 <section

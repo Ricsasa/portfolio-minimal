@@ -17,6 +17,11 @@ export interface Experience {
     additionalActivities?: string[];
 }
 
+/**
+ * `compact` selects how much of the entry is shown, not how it is laid out.
+ * The timeline rail is the same on the home page and on the detail page, so the
+ * detail page reads as a longer version of the same row.
+ */
 type Props = Experience & { slug?: string; compact?: boolean };
 
 const { role, company, years, projects, additionalActivities, slug, compact = false } = Astro.props;
@@ -28,25 +33,39 @@ const toList = (value?: string | string[]) =>
     value === undefined ? [] : Array.isArray(value) ? value : [value];
 ---
 
-<div class="card w-full col-span-8 col-start-3 flex flex-col gap-4">
-    <div>
-        <div class="text-xs text-black-secondary">
-            {company ? `${company} · ${years}` : years}
-        </div>
-        <h3 class="text-xl font-bold text-black-tertiary">{role}</h3>
+<div class="w-full md:col-span-12 flex flex-col gap-4 md:grid md:grid-cols-12 md:gap-10 md:items-start">
+    {/* Company and dates sit on their own rail so the roles read as a timeline. */}
+    <div class="flex flex-col md:col-span-3 md:sticky md:top-24 md:text-right">
+        <span class="text-xs uppercase tracking-[0.08em] text-iris">
+            {company ?? years}
+        </span>
+        {company && <span class="text-xs text-black-secondary">{years}</span>}
     </div>
 
-    {
-        !compact && (
-            <div class="flex flex-col gap-4">
-                {projects.map((project) => (
-                    <div class="border border-black-tertiary/15 rounded-lg p-4 flex flex-col gap-2">
-                        <span class="font-bold text-sm text-black-tertiary">{project.name}</span>
+    <div class="flex flex-col gap-6 md:col-span-9 md:border-l md:border-border-rule md:pl-10 md:pb-12">
+        <h3
+            class:list={[
+                "font-bold text-black-tertiary tracking-[-0.02em]",
+                compact ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl",
+            ]}
+        >
+            {role}
+        </h3>
+
+        {
+            !compact &&
+                projects.map((project) => (
+                    <div class="flex flex-col gap-2 border-t border-border-rule pt-5">
+                        <span class="text-sm font-bold text-black-tertiary">
+                            {project.name}
+                        </span>
+
                         <ul class="list-[circle] pl-4.5 flex flex-col gap-1">
                             {project.activities.map((activity) => (
                                 <li class="text-[13px] text-black-tertiary">{activity}</li>
                             ))}
                         </ul>
+
                         <ul class="list-[circle] pl-4.5 flex flex-col gap-1">
                             <li class="text-[13px] text-black-tertiary">
                                 <span class="font-bold">
@@ -64,33 +83,30 @@ const toList = (value?: string | string[]) =>
                             ))}
                         </ul>
                     </div>
-                ))}
-            </div>
-        )
-    }
+                ))
+        }
 
-    {
-        !compact && additionalActivities && additionalActivities.length > 0 && (
-            <div class="border border-black-tertiary/15 rounded-lg p-4 flex flex-col gap-2.5">
-                <span class="text-xs font-bold uppercase text-black-secondary">
-                    {i18n.t("experience.additional-activities-label")}
-                </span>
-                <ul class="list-disc pl-4.5 flex flex-col gap-1">
-                    {additionalActivities.map((activity) => (
-                        <li class="text-[13px] text-black-tertiary">
-                            {activity}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )
-    }
+        {
+            !compact && additionalActivities && additionalActivities.length > 0 && (
+                <div class="flex flex-col gap-2.5 border-t border-border-rule pt-5">
+                    <span class="text-sm font-bold uppercase tracking-[0.08em] text-pine">
+                        {i18n.t("experience.additional-activities-label")}
+                    </span>
+                    <ul class="list-disc pl-4.5 flex flex-col gap-1">
+                        {additionalActivities.map((activity) => (
+                            <li class="text-[13px] text-black-tertiary">{activity}</li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        }
 
-    {
-        detailHref && (
-            <a href={detailHref} class="self-start text-sm text-black-primary underline">
-                {i18n.t("experience.details-label")}
-            </a>
-        )
-    }
+        {
+            detailHref && (
+                <a href={detailHref} class="self-start text-sm text-pine underline">
+                    {i18n.t("experience.details-label")}
+                </a>
+            )
+        }
+    </div>
 </div>

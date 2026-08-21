@@ -6,7 +6,7 @@ interface Props {
 	accentColor?: string;
 }
 
-const { accentColor = "custom-yellow-300" } = Astro.props;
+const { accentColor = "pine" } = Astro.props;
 
 const screenshots = [
 	...Array.from({ length: 4 }, (_, i) => `/projects/lumina-admin/${i + 1}.avif`),
@@ -212,11 +212,11 @@ carouselImages.push(...portrait.slice(carouselImages.length - landscape.length))
 
 <div class="relative w-full h-dvh flex flex-col items-center" style="padding: clamp(3rem, 10vh, 6rem) clamp(1rem, 5vw, 3rem) 0;">
 	<div class="flex flex-col items-center text-center w-full" style="gap: clamp(0.75rem, 2vh, 1.5rem);">
-		<h1 class="hero-title hero-anim-title font-sans font-black uppercase tracking-tighter leading-none flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem); color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-black-primary);">
-			Ricardo<span style="color: var(--color-black-primary);">Sánchez</span>
+		<h1 class="hero-title hero-anim-title font-sans font-black uppercase tracking-tighter leading-none flex justify-center flex-wrap m-0" style="gap: clamp(0.25rem, 2vw, 0.5rem); color: transparent; -webkit-text-stroke: clamp(1px, 0.15vw, 2px) var(--color-pine);">
+			Ricardo<span style="color: var(--color-pine);">Sánchez</span>
 		</h1>
 
-		<p class="hero-anim-subtitle m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-black-secondary);">Full Stack Engineer</p>
+		<p class="hero-anim-subtitle m-0 font-bold uppercase tracking-widest" style="font-size: clamp(0.6rem, 1.8vw, 0.85rem); color: var(--color-iris);">Full Stack Engineer</p>
 	</div>
 
 	<div class="hero-carousel hero-anim-image absolute bottom-0 left-1/2 -translate-x-1/2 w-screen">

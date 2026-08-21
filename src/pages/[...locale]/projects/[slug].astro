@@ -29,13 +29,13 @@ const { project } = Astro.props;
 const selectedWorkHref = getLocalizedPathname("/#selected-work", i18n.language);
 ---
 
-<Layout title={`${project.title} — Ricardo Sánchez Saldivar`} description={project.brief_description}>
-    <Section id="project-detail" bgColor="bg-custom-green-100">
-        <a href={selectedWorkHref} class="self-start text-sm text-black-primary underline mb-12">
+<Layout bgColor="bg-pine-wash" title={`${project.title} — Ricardo Sánchez Saldivar`} description={project.brief_description}>
+    <Section id="project-detail" bgColor="bg-pine-wash">
+        <a href={selectedWorkHref} class="self-start text-sm text-pine underline mb-12">
             ← {i18n.t("common:pages.selected_work")}
         </a>
-        <div class="flex flex-col gap-16 items-center w-full">
-            <div class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start">
+        <div class="flex flex-col w-full">
+            <div class="reveal w-full md:grid md:grid-cols-12 md:items-start">
                 <ProjectAstroComponent
                     title={project.title}
                     brief_description={project.brief_description}

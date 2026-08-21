@@ -28,13 +28,13 @@ const { experience } = Astro.props;
 const experienceHref = getLocalizedPathname("/#professional-experience", i18n.language);
 ---
 
-<Layout title={`${experience.role} — Ricardo Sánchez Saldivar`}>
-    <Section id="professional-experience-detail" bgColor="bg-blue-100">
-        <a href={experienceHref} class="self-start text-sm text-black-primary underline mb-12">
+<Layout bgColor="bg-iris-wash" title={`${experience.role} — Ricardo Sánchez Saldivar`}>
+    <Section id="professional-experience-detail" bgColor="bg-iris-wash">
+        <a href={experienceHref} class="self-start text-sm text-pine underline mb-12">
             ← {i18n.t("common:pages.professional_experience")}
         </a>
-        <div class="flex flex-col gap-16 items-center w-full">
-            <div class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start">
+        <div class="flex flex-col w-full">
+            <div class="reveal w-full md:grid md:grid-cols-12 md:items-start">
                 <ExperienceAstroComponent
                     role={experience.role}
                     company={experience.company}

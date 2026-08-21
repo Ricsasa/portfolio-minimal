@@ -3,9 +3,17 @@ export interface SectionConfig {
   id: string;
   /** i18n key for the menu label. */
   labelKey: string;
-  /** Full-bleed background of the section band. */
+  /**
+   * Full-bleed background of the section band. The bands alternate between a
+   * pine wash and an iris wash so both accents carry the whole page. They stay
+   * inside one light theme, and each section is still told apart by its layout.
+   */
   bgColor: string;
-  /** Accent used by the section and mirrored by the active menu entry. */
+  /**
+   * Action accent, mirrored by the active menu entry. It is pine everywhere.
+   * The metadata accent (iris) is applied directly by the components that own
+   * metadata, so the two roles cannot be swapped by accident.
+   */
   accentColor: string;
 }
 
@@ -13,32 +21,32 @@ export const SECTIONS: SectionConfig[] = [
   {
     id: "home",
     labelKey: "common:pages.home",
-    bgColor: "bg-custom-yellow-100",
-    accentColor: "custom-yellow-300",
+    bgColor: "bg-paper",
+    accentColor: "pine",
   },
   {
     id: "selected-work",
     labelKey: "common:pages.selected_work",
-    bgColor: "bg-custom-green-100",
-    accentColor: "custom-green-300",
+    bgColor: "bg-pine-wash",
+    accentColor: "pine",
   },
   {
     id: "professional-experience",
     labelKey: "common:pages.professional_experience",
-    bgColor: "bg-custom-blue-100",
-    accentColor: "custom-blue-300",
+    bgColor: "bg-iris-wash",
+    accentColor: "pine",
   },
   {
     id: "skills",
     labelKey: "common:pages.skills",
-    bgColor: "bg-custom-purple-100",
-    accentColor: "custom-purple-300",
+    bgColor: "bg-pine-wash",
+    accentColor: "pine",
   },
   {
     id: "education-and-certification",
     labelKey: "common:pages.education_and_certification",
-    bgColor: "bg-custom-coral-100",
-    accentColor: "custom-coral-300",
+    bgColor: "bg-iris-wash",
+    accentColor: "pine",
   },
 ];
 

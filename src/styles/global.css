@@ -10,26 +10,37 @@
 }
 
 @theme {
-    --color-black-primary: #111111;
-    --color-black-secondary: #4B4B4B;
-    --color-black-tertiary: #2a2a22;
+    --color-black-primary: #14140F;
+    --color-black-secondary: #55534B;
+    --color-black-tertiary: #23231C;
 
-    --color-custom-yellow-100: #FFF6B3;
-    --color-custom-yellow-300: #FFD84D;
-    --color-custom-green-100: #CFF8D8;
-    --color-custom-green-300: #6EE7A8;
-    --color-custom-blue-100: #D8F0FF;
-    --color-custom-blue-300: #74C8FF;
-    --color-custom-purple-100: #E9DEFF;
-    --color-custom-purple-300: #B78CFF;
-    --color-custom-coral-100: #FFE0D6;
-    --color-custom-coral-300: #FF9B7A;
-    --color-custom-cream-100: #FDF6E3;
-    --color-custom-cream-300: #E3D5B0;
+    /*
+     * Two backgrounds only. Section bands alternate between them, so the page
+     * keeps one theme and identity comes from layout, not from hue.
+     */
+    --color-paper: #F5F2EA;
+    --color-paper-deep: #ECE8DD;
 
-    /* Hairline used by every card and divider. Kept as an alpha so it reads
-       the same over each of the section bands. */
+    /*
+     * Two accents with a fixed role split, never swapped:
+     *   pine -> action  (links, hover underline, active nav, CTA, focus)
+     *   iris -> metadata (tags, year, category, period, title rule)
+     * Both clear WCAG AA for body text over either paper.
+     */
+    --color-pine: #2F6B4F;
+    --color-pine-soft: #DCE8E0;
+    --color-pine-wash: #EDF2EE;
+    --color-iris: #5B3E8E;
+    --color-iris-soft: #E6DFF0;
+    --color-iris-wash: #EFEBF5;
+
+    /* Hairline used by every card. Kept as an alpha so it reads the same over
+       every band. */
     --color-border-subtle: rgb(0 0 0 / 0.06);
+
+    /* Divider between rows and the timeline rail. Pine carries the structure
+       of the page, iris carries the metadata sitting inside it. */
+    --color-border-rule: rgb(47 107 79 / 0.28);
 
     --container-8xl: 90rem;
     --container-9xl: 100rem;
@@ -51,8 +62,11 @@
 }
 
 /* accentColor is composed at runtime, so these can't be found by scanning */
-@source inline("hover:{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral,custom-cream}-{100,300}");
-@source inline("{border,bg,text}-{custom-yellow,custom-green,custom-blue,custom-purple,custom-coral,custom-cream}-{100,300}");
+@source inline("hover:{border,bg,text}-{pine,iris,paper}");
+@source inline("border-{border-rule,border-subtle}");
+@source inline("{border,bg,text}-{pine,iris,paper}");
+@source inline("hover:{border,bg,text}-{pine-soft,iris-soft,pine-wash,iris-wash,paper-deep}");
+@source inline("{border,bg,text}-{pine-soft,iris-soft,pine-wash,iris-wash,paper-deep}");
 
 @plugin "@iconify/tailwind4";
 
@@ -72,7 +86,7 @@
      * Layout (column span, inner gaps) stays in the markup.
      */
     .card {
-        background-color:rgba(255, 255, 255, 0.5);
+        background-color: rgb(255 255 255 / 0.55);
         border: 1px solid var(--color-border-subtle);
         border-radius: 0.5rem;
         padding: 2rem;
@@ -85,6 +99,13 @@
 
     /* Shape and type only; each section supplies its own accent background. */
     .tag {
+        /* A chip is sized by its own text. Without this it is a flex item and
+           stretches to the tallest thing in the row, such as a two-line label. */
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        border: 1px solid rgb(91 62 142 / 0.22);
+        border-radius: 0.25rem;
         padding: 0.25rem 0.75rem;
         font-size: 0.75rem;
         line-height: 1.625;
@@ -133,7 +154,7 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background-color: var(--header-accent, rgb(0 0 0 / 0.1));
+        background-color: var(--color-pine);
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);

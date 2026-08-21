@@ -36,12 +36,12 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
 
 <Layout
     title={`${i18n.t("common:pages.blog")} — Ricardo Sanchez Saldivar`}
-    bgColor="bg-custom-cream-100"
-    accentColor="custom-cream-300"
+    bgColor="bg-paper"
+    accentColor="pine"
 >
     <div
         class="mx-auto w-full max-w-9xl px-8 py-24 md:px-48 md:py-32"
-        style="--section-accent: var(--color-custom-cream-300)"
+        style="--section-accent: var(--color-pine)"
     >
         <div class="w-full mb-12 md:mb-36 text-center">
             <h1 class="font-sans text-5xl font-bold tracking-[-0.03em] md:text-6xl border-b border-(--section-accent) pb-6 inline-block">
@@ -60,7 +60,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
                         data-tag-filter-option
                         data-tag=""
                         aria-current="true"
-                        class="tag bg-custom-cream-100 text-black-tertiary transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                        class="tag bg-iris-soft text-iris transition aria-[current=true]:bg-iris aria-[current=true]:text-paper"
                     >
                         {i18n.t("common:blog.filter-all-label")}
                     </a>
@@ -70,7 +70,7 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b
                             data-tag-filter-option
                             data-tag={tag}
                             aria-current="false"
-                            class="tag bg-custom-cream-100 text-black-tertiary transition aria-[current=true]:bg-black-tertiary aria-[current=true]:text-white"
+                            class="tag bg-iris-soft text-iris transition aria-[current=true]:bg-iris aria-[current=true]:text-paper"
                         >
                             {tag}
                         </a>

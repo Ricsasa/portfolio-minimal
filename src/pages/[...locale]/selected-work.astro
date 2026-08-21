@@ -17,13 +17,13 @@ const projects = i18n.t("projects:projects", {
 }) as Project[];
 ---
 
-<SectionAstroComponent id="selected-work" bgColor="bg-custom-green-100">
+<SectionAstroComponent id="selected-work" bgColor="bg-paper-deep">
     <TitleAstroComponent title={i18n.t("common:pages.selected_work")} />
-    <div class="flex flex-col gap-16 items-center w-full">
+    <div class="flex flex-col gap-20 md:gap-28 w-full">
         {
             projects.map((project, index) => (
                 <div
-                    class="reveal flex flex-col gap-12 md:grid md:grid-cols-12 md:grid-rows-1 w-full max-w-7-xl mx-auto items-start"
+                    class="reveal w-full md:grid md:grid-cols-12 md:items-start"
                     style={`--index: ${index}`}
                 >
                     <ProjectAstroComponent

@@ -5,7 +5,7 @@ import MenuAstroComponent from "./menu.astro";
 import LangSelectorAstroComponent from "./lang-selector.astro";
 import DownloadCvAstroComponent from "./download-cv.astro";
 
-const { accentColor = "custom-yellow-300" } = Astro.props;
+const { accentColor = "pine" } = Astro.props;
 ---
 
 <header
@@ -18,7 +18,7 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
         class="flex flex-col items-end gap-6   md:gap-8 md:px-6 md:py-5"
     >
         <div
-            class="flex items-center gap-4  bg-white/40 px-3 py-1.5 backdrop-blur-sm md:flex-col md:items-end md:gap-3 md:rounded-none md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none"
+            class="flex items-center gap-4  bg-paper/70 px-3 py-1.5 backdrop-blur-sm md:flex-col md:items-end md:gap-3 md:rounded-none md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none"
         >
             <DownloadCvAstroComponent />
             <LangSelectorAstroComponent />
@@ -27,14 +27,14 @@ const { accentColor = "custom-yellow-300" } = Astro.props;
                 data-menu-toggle
                 aria-controls="main-menu"
                 aria-expanded="false"
-                class="px-2 py-1 font-sans text-sm font-bold text-black-primary transition-colors duration-300 hover:bg-(--header-accent) md:hidden"
+                class="px-2 py-1 font-sans text-sm font-bold text-black-primary transition-colors duration-300 hover:bg-pine-soft md:hidden"
             >
                 {i18n.t("common:menu-label")}
             </button>
         </div>
         <div
             id="main-menu"
-            class="hidden bg-white/40 backdrop-blur-sm px-4 py-3 group-data-[menu-open=true]/header:block md:block md:border-0 md:bg-transparent md:p-0"
+            class="hidden bg-paper/70 backdrop-blur-sm px-4 py-3 group-data-[menu-open=true]/header:block md:block md:border-0 md:bg-transparent md:p-0"
         >
             <MenuAstroComponent />
         </div>

@@ -7,13 +7,16 @@ interface Props {
 const { title, skills } = Astro.props;
 ---
 
-<div class="card w-full col-span-8 col-start-3 flex flex-col gap-4">
-    <h3 class="text-xl font-bold text-black-tertiary">{title}</h3>
+{/* The one dense band on the page: a label rail and a single wrapped tag run. */}
+<div class="w-full md:col-span-12 md:grid md:grid-cols-12 md:gap-10 flex flex-col gap-3 border-t border-border-rule py-8">
+    <h3 class="md:col-span-3 text-sm font-bold uppercase tracking-[0.08em] text-pine">
+        {title}
+    </h3>
 
-    <div class="flex flex-wrap gap-1.5">
+    <div class="md:col-span-9 flex flex-wrap gap-1.5">
         {
             skills.map((skill) => (
-                <span class="tag bg-custom-purple-100 text-black-tertiary">
+                <span class="tag bg-iris-soft text-iris">
                     {skill}
                 </span>
             ))

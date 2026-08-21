@@ -6,10 +6,23 @@ import { getCollection } from "astro:content";
 import { SECTIONS } from "../config/sections";
 
 const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
-const isHomePage =
-    normalize(getLocalizedPathname(Astro.url.pathname, "")) === "/";
+const currentPath = normalize(getLocalizedPathname(Astro.url.pathname, ""));
 
-const isBlogPage = normalize(getLocalizedPathname(Astro.url.pathname, "")).startsWith("/blog");
+const isHomePage = currentPath === "/";
+const isBlogPage = currentPath.startsWith("/blog");
+
+/**
+ * Detail pages live under their own route but still belong to a section, so the
+ * menu keeps that section marked while the visitor is inside one of them.
+ */
+const SECTION_ROUTES: Record<string, string> = {
+    "/projects": "selected-work",
+    "/professional-experiences": "professional-experience",
+};
+
+const activeSectionId = Object.entries(SECTION_ROUTES).find(([route]) =>
+    currentPath.startsWith(route),
+)?.[1];
 
 const hasBlogPosts =
     (
@@ -29,15 +42,15 @@ const blogHref = getLocalizedPathname("/blog", i18n.language);
                     <a
                         href={isHomePage ? `#${id}` : getLocalizedPathname(`/#${id}`, i18n.language)}
                         data-section-link={isHomePage ? id : undefined}
-                        data-active={isHomePage && index === 0 ? "true" : undefined}
-                        aria-current={isHomePage && index === 0 ? "true" : undefined}
-                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-black-primary"
+                        data-active={(isHomePage ? index === 0 : id === activeSectionId) ? "true" : undefined}
+                        aria-current={(isHomePage ? index === 0 : id === activeSectionId) ? "true" : undefined}
+                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-pine"
                     >
                         <span
                             aria-hidden="true"
                             class="size-3 shrink-0 rounded-full bg-(--header-accent) opacity-0 transition-opacity duration-300 group-data-[active=true]:opacity-100"
                         />
-                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-(--header-accent)">
+                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-pine-soft">
                             {i18n.t(labelKey)}
                         </span>
                     </a>
@@ -51,13 +64,13 @@ const blogHref = getLocalizedPathname("/blog", i18n.language);
                         href={blogHref}
                         data-active={isBlogPage ? "true" : undefined}
                         aria-current={isBlogPage ? "true" : undefined}
-                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-black-primary"
+                        class="group flex items-center gap-2 font-sans text-lg font-light text-black-secondary transition-colors duration-300 hover:text-black-primary data-[active=true]:font-bold data-[active=true]:text-pine"
                     >
                         <span
                             aria-hidden="true"
                             class="size-3 shrink-0 rounded-full bg-(--header-accent) opacity-0 transition-opacity duration-300 group-data-[active=true]:opacity-100"
                         />
-                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-(--header-accent)">
+                        <span class="px-2 py-0.5 transition-colors duration-300 group-hover:bg-pine-soft">
                             {i18n.t("common:pages.blog")}
                         </span>
                     </a>
